@@ -8,59 +8,168 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif; background: #fafafa; color: #333; line-height: 1.8; }
 
-  .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 80px 20px; text-align: center; }
-  .header h1 { font-size: 2.4em; font-weight: 700; margin-bottom: 10px; }
-  .header p { font-size: 1.1em; opacity: 0.85; }
+  /* 导航 */
+  .nav { background: #fff; border-bottom: 1px solid #eee; padding: 14px 20px; position: sticky; top: 0; z-index: 100; }
+  .nav-inner { max-width: 960px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-size: 1.1em; font-weight: 700; color: #333; text-decoration: none; }
+  .nav-links a { color: #666; text-decoration: none; margin-left: 24px; font-size: 0.9em; transition: color 0.2s; }
+  .nav-links a:hover { color: #667eea; }
 
-  .container { max-width: 760px; margin: 0 auto; padding: 40px 20px; }
+  /* 头部 */
+  .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 60px 20px; text-align: center; }
+  .hero h1 { font-size: 2.2em; font-weight: 700; margin-bottom: 8px; }
+  .hero p { font-size: 1em; opacity: 0.85; }
 
-  .post { background: #fff; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; }
+  /* 布局 */
+  .main { max-width: 960px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 1fr 340px; gap: 32px; }
+  @media (max-width: 768px) { .main { grid-template-columns: 1fr; } }
+
+  /* 博客文章 */
+  .post { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; }
   .post:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-  .post h2 { font-size: 1.4em; margin-bottom: 8px; color: #1a1a1a; }
+  .post h2 { font-size: 1.3em; margin-bottom: 6px; }
   .post h2 a { text-decoration: none; color: inherit; }
   .post h2 a:hover { color: #667eea; }
-  .meta { font-size: 0.85em; color: #999; margin-bottom: 16px; }
-  .tag { display: inline-block; background: #f0f0f5; color: #667eea; padding: 2px 10px; border-radius: 20px; font-size: 0.8em; margin-right: 6px; }
-  .post p { color: #555; }
-  .read-more { display: inline-block; margin-top: 12px; color: #667eea; text-decoration: none; font-size: 0.9em; }
+  .meta { font-size: 0.82em; color: #999; margin-bottom: 12px; }
+  .tag { display: inline-block; background: #f0f0f5; color: #667eea; padding: 2px 10px; border-radius: 20px; font-size: 0.78em; margin-right: 6px; }
+  .post p { color: #555; font-size: 0.95em; }
+  .read-more { display: inline-block; margin-top: 10px; color: #667eea; text-decoration: none; font-size: 0.88em; }
   .read-more:hover { text-decoration: underline; }
 
-  .footer { text-align: center; padding: 40px 20px; color: #aaa; font-size: 0.85em; }
+  /* 侧边栏 */
+  .sidebar {}
+  .section-title { font-size: 1em; font-weight: 700; color: #333; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #667eea; display: flex; align-items: center; gap: 6px; }
+  .section-title span { font-size: 0.85em; }
+
+  /* 仓库卡片 */
+  .repo-card { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; border-left: 3px solid #667eea; }
+  .repo-card:hover { transform: translateY(-1px); box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+  .repo-card h3 { font-size: 0.95em; margin-bottom: 4px; }
+  .repo-card h3 a { text-decoration: none; color: #667eea; }
+  .repo-card h3 a:hover { text-decoration: underline; }
+  .repo-card .repo-desc { color: #888; font-size: 0.82em; margin-bottom: 8px; min-height: 1.4em; }
+  .repo-card .repo-meta { display: flex; align-items: center; gap: 12px; font-size: 0.78em; color: #aaa; }
+  .lang-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; vertical-align: middle; }
+  .lang-js { background: #f1e05a; }
+  .lang-html { background: #e34c26; }
+  .lang-python { background: #3572A5; }
+  .lang-ts { background: #3178c6; }
+  .lang-default { background: #ccc; }
+
+  /* 关于卡片 */
+  .about-card { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); text-align: center; }
+  .about-card .avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5em; font-weight: 700; }
+  .about-card .username { font-weight: 600; margin-bottom: 4px; }
+  .about-card .bio { color: #888; font-size: 0.85em; }
+  .gh-link { display: inline-block; margin-top: 10px; padding: 6px 16px; background: #667eea; color: #fff; border-radius: 20px; text-decoration: none; font-size: 0.82em; transition: background 0.2s; }
+  .gh-link:hover { background: #5a6fd6; }
+
+  /* 页脚 */
+  .footer { text-align: center; padding: 40px 20px; color: #aaa; font-size: 0.82em; border-top: 1px solid #eee; margin-top: 20px; }
   .footer a { color: #667eea; text-decoration: none; }
 </style>
 </head>
 <body>
 
-<div class="header">
+<!-- 导航 -->
+<div class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">我的博客</a>
+    <div class="nav-links">
+      <a href="#blog">文章</a>
+      <a href="#projects">项目</a>
+      <a href="https://github.com/qq845200" target="_blank">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<!-- 头部 -->
+<div class="hero">
   <h1>我的博客</h1>
   <p>记录生活，分享思考</p>
 </div>
 
-<div class="container">
+<!-- 主体 -->
+<div class="main">
 
-  <div class="post">
-    <h2><a href="#">欢迎来到我的博客</a></h2>
-    <div class="meta">2026-05-23 · <span class="tag">随笔</span></div>
-    <p>这是博客的第一篇文章。在这里，我会分享技术笔记、生活感悟和各种有趣的事物。感谢你的来访！</p>
-    <a class="read-more" href="#">阅读全文 →</a>
+  <!-- 左：博客 -->
+  <div id="blog">
+    <div class="post">
+      <h2><a href="#">欢迎来到我的博客</a></h2>
+      <div class="meta">2026-05-23 · <span class="tag">随笔</span></div>
+      <p>这是博客的第一篇文章。在这里，我会分享技术笔记、生活感悟和各种有趣的事物。感谢你的来访！</p>
+      <a class="read-more" href="#">阅读全文 →</a>
+    </div>
+    <div class="post">
+      <h2><a href="#">用 GitHub Pages 搭建个人博客</a></h2>
+      <div class="meta">2026-05-23 · <span class="tag">技术</span><span class="tag">教程</span></div>
+      <p>GitHub Pages 是一个免费的静态网站托管服务，只需要一个 GitHub 仓库就可以搭建自己的博客。零成本、零维护，非常方便。</p>
+      <a class="read-more" href="#">阅读全文 →</a>
+    </div>
+    <div class="post">
+      <h2><a href="#">Hello World</a></h2>
+      <div class="meta">2026-05-23 · <span class="tag">日记</span></div>
+      <p>一切从这里开始。</p>
+      <a class="read-more" href="#">阅读全文 →</a>
+    </div>
   </div>
 
-  <div class="post">
-    <h2><a href="#">用 GitHub Pages 搭建个人博客</a></h2>
-    <div class="meta">2026-05-23 · <span class="tag">技术</span><span class="tag">教程</span></div>
-    <p>GitHub Pages 是一个免费的静态网站托管服务，只需要一个 GitHub 仓库就可以搭建自己的博客。零成本、零维护，非常方便。</p>
-    <a class="read-more" href="#">阅读全文 →</a>
-  </div>
+  <!-- 右：侧边栏 -->
+  <div class="sidebar">
 
-  <div class="post">
-    <h2><a href="#">Hello World</a></h2>
-    <div class="meta">2026-05-23 · <span class="tag">日记</span></div>
-    <p>一切从这里开始。</p>
-    <a class="read-more" href="#">阅读全文 →</a>
-  </div>
+    <!-- 关于 -->
+    <div class="about-card">
+      <div class="avatar">Q</div>
+      <div class="username">qq845200</div>
+      <div class="bio">开发者 · 终身学习者</div>
+      <a class="gh-link" href="https://github.com/qq845200" target="_blank">关注我的 GitHub</a>
+    </div>
 
+    <!-- 项目 -->
+    <div id="projects">
+      <div class="section-title">📂 开源项目</div>
+
+      <div class="repo-card">
+        <h3><a href="https://github.com/qq845200/stock-macd-scanner" target="_blank">stock-macd-scanner</a></h3>
+        <div class="repo-desc">免费 MACD 股票扫描系统，支持金叉死叉识别和智能预测</div>
+        <div class="repo-meta">
+          <span><span class="lang-dot lang-default"></span>—</span>
+          <span>更新于 2026-05-14</span>
+        </div>
+      </div>
+
+      <div class="repo-card">
+        <h3><a href="https://github.com/qq845200/claude1688" target="_blank">claude1688</a></h3>
+        <div class="repo-desc">Claude 相关工具项目</div>
+        <div class="repo-meta">
+          <span><span class="lang-dot lang-js"></span>JavaScript</span>
+          <span>更新于 2026-05-23</span>
+        </div>
+      </div>
+
+      <div class="repo-card">
+        <h3><a href="https://github.com/qq845200/MTO" target="_blank">MTO</a></h3>
+        <div class="repo-desc">个人项目</div>
+        <div class="repo-meta">
+          <span><span class="lang-dot lang-default"></span>—</span>
+          <span>更新于 2026-01-30</span>
+        </div>
+      </div>
+
+      <div class="repo-card">
+        <h3><a href="https://github.com/qq845200/qq845200.github.io" target="_blank">qq845200.github.io</a></h3>
+        <div class="repo-desc">个人博客网站</div>
+        <div class="repo-meta">
+          <span><span class="lang-dot lang-html"></span>HTML</span>
+          <span>更新于 2026-05-23</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
+<!-- 页脚 -->
 <div class="footer">
   <p>© 2026 我的博客 · 托管于 <a href="https://pages.github.com">GitHub Pages</a></p>
 </div>
