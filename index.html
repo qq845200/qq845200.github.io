@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>AI Skills Store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -108,6 +108,8 @@ a { color: inherit; text-decoration: none; }
 @media (pointer: coarse) {
   .cursor-core, .cursor-ring, .cursor-glow { display: none !important; }
   body { cursor: auto; }
+  .pill, .tag-pill, .btn-copy, .sort-toggle, .skill-card, .blog-card,
+  a, button, input { cursor: auto !important; }
 }
 
 /* ================================================================
@@ -1051,31 +1053,139 @@ body::after {
 .fade-in.visible { opacity: 1; transform: translateY(0) scale(1); }
 
 /* ================================================================
-   响应式
+   响应式 — 全面移动端优化
    ================================================================ */
 
+/* 平板 (1024px) */
 @media (max-width: 1024px) {
-  .bento-grid { grid-template-columns: repeat(3, 1fr); }
-  .skill-card.featured { grid-column: span 2; grid-row: span 1; }
+  .bento-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .skill-card.featured { grid-column: span 2; grid-row: span 1; padding: 26px; }
+  .skill-card.featured .skill-desc { -webkit-line-clamp: 3; }
+  .orb-1 { width: 600px; height: 600px; }
+  .orb-2 { width: 500px; height: 500px; }
+  .orb-3 { width: 400px; height: 400px; }
+  .orb-4, .orb-5 { width: 300px; height: 300px; }
 }
 
+/* 大屏手机 / 小平板 (768px) */
 @media (max-width: 768px) {
-  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .skill-card.featured { grid-column: span 2; }
-  .hero-stats { gap: 28px; }
-  .hero-stats .stat-item { font-size: 0.76em; }
-  .hero-stats .stat-item .stat-num { font-size: 1.2em; }
-  .filter-bar { flex-direction: column; align-items: flex-start; }
-  .filter-tags { width: 100%; }
+  .skill-card { padding: 18px; backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); }
+  .blog-card { backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); }
+
+  .hero { min-height: 100svh; padding: 48px 20px 80px; }
+  .hero-search input { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .hero-stats { gap: 24px; flex-wrap: wrap; justify-content: center; }
+  .hero-stats .stat-item { font-size: 0.74em; }
+  .hero-stats .stat-item .stat-num { font-size: 1.15em; }
+
+  .filter-bar { flex-direction: column; align-items: stretch; gap: 10px; }
+  .filter-tags { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .tag-pill { flex-shrink: 0; padding: 7px 16px; min-height: 36px; display: inline-flex; align-items: center; }
+  .sort-toggle { align-self: flex-start; }
+
   .blog-grid { grid-template-columns: 1fr; }
+
+  .stat-bar-label { min-width: 80px; font-size: 0.78em; }
+  .content-wrap { padding: 0 16px; }
+  .stats-section { padding: 40px 16px; }
+
+  .hero-grid { transform: perspective(400px) rotateX(5deg); }
+
+  .orb-1 { width: 450px; height: 450px; }
+  .orb-2 { width: 350px; height: 350px; }
+  .orb-3 { width: 280px; height: 280px; }
+  .orb-4, .orb-5 { width: 220px; height: 220px; }
 }
 
+/* 手机 (540px) */
 @media (max-width: 540px) {
-  .bento-grid { grid-template-columns: 1fr; }
-  .skill-card.featured { grid-column: span 1; }
-  .hero h1 { font-size: 2.4em; }
-  .hero-pills { gap: 6px; }
-  .pill { padding: 6px 14px; font-size: 0.78em; }
+  .bento-grid { grid-template-columns: 1fr; gap: 8px; }
+  .skill-card.featured { grid-column: span 1; padding: 22px; }
+  .skill-card.featured .skill-icon { width: 44px; height: 44px; }
+  .skill-card.featured .skill-name { font-size: 1em; }
+
+  .hero { min-height: 100svh; padding: 40px 16px 60px; }
+  .hero h1 { font-size: clamp(2em, 10vw, 2.8em); }
+  .hero-sub { font-size: 0.92em; margin-bottom: 32px; }
+  .hero-content { max-width: 100%; }
+
+  .hero-search { max-width: 100%; }
+  .hero-search input { height: 50px; font-size: 0.95em; border-radius: 14px; padding: 0 18px 0 48px; }
+
+  .hero-pills { gap: 6px; justify-content: center; }
+  .pill { padding: 8px 16px; font-size: 0.78em; min-height: 40px; display: inline-flex; align-items: center; }
+
+  .hero-stats { gap: 16px; }
+  .hero-badge { margin-bottom: 24px; }
+
+  .scroll-hint { bottom: 20px; }
+
+  .skill-card { padding: 16px; border-radius: var(--radius-sm); }
+  .skill-card.featured { border-radius: var(--radius-sm); }
+  .skill-header { gap: 10px; }
+  .skill-icon { width: 38px; height: 38px; border-radius: 10px; font-size: 0.88em; }
+  .skill-desc { font-size: 0.78em; -webkit-line-clamp: 2; margin-bottom: 10px; }
+  .skill-tags { gap: 3px; }
+  .skill-tag { padding: 1px 7px; font-size: 0.62em; }
+  .skill-meta { gap: 10px; font-size: 0.72em; }
+  .btn-copy { padding: 8px 14px; min-height: 36px; border-radius: 8px; }
+
+  .blog-card { padding: 20px; border-radius: var(--radius-sm); }
+  .blog-section { padding: 32px 16px 60px; }
+
+  .footer { padding: 24px 16px; padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+
+  .content-wrap { padding: 0 12px; }
+
+  .stat-bars { gap: 10px; }
+  .stat-bar-row { gap: 10px; }
+  .stat-bar-label { min-width: 70px; font-size: 0.76em; }
+  .stat-bar-track { height: 5px; }
+}
+
+/* 触摸设备优化 */
+@media (pointer: coarse) {
+  .pill, .tag-pill, .btn-copy, .sort-toggle, a, button { min-height: 44px; }
+  .pill { padding: 10px 20px; }
+  .tag-pill { padding: 8px 18px; }
+  .btn-copy { padding: 10px 18px; }
+
+  /* 触摸激活态替代 hover */
+  .skill-card:active { background: var(--glass-2); border-color: rgba(255,255,255,0.10); transform: scale(0.98); }
+  .pill:active { background: var(--glass-2); transform: scale(0.96); }
+  .pill.active:active { background: rgba(90,200,250,0.12); }
+  .tag-pill:active { background: rgba(255,255,255,0.06); transform: scale(0.96); }
+  .btn-copy:active { border-color: rgba(90,200,250,0.30); color: var(--cyan); transform: scale(0.95); }
+  .blog-card:active { background: var(--glass-2); transform: scale(0.98); }
+  .sort-toggle:active { background: var(--glass-2); transform: scale(0.96); }
+
+  /* 禁用鼠标追踪光斑和 3D 倾斜 */
+  .skill-card::after { display: none; }
+  .skill-card:hover { transform: none; box-shadow: none; background: var(--glass); border-color: var(--glass-border); }
+  .skill-card:hover .cat-strip { opacity: 0; }
+
+  /* 分类色条始终可见（替代 hover 触发） */
+  .skill-card .cat-strip { opacity: 0.5; }
+  .skill-card:active .cat-strip { opacity: 1; }
+}
+
+/* 安全区域（iPhone 刘海/灵动岛） */
+@supports (padding: env(safe-area-inset-top)) {
+  .hero { padding-top: calc(48px + env(safe-area-inset-top)); }
+  .hero-search input { border-radius: 14px; }
+  .footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+}
+
+/* 移动端性能优化：减少动画 */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .skill-card.featured { animation: none; }
+  .featured-border { animation-duration: 20s; }
+  .orb { animation-duration: 40s; }
+  @keyframes drift-a { 0%, 100% { transform: translate(0, 0); } }
+  @keyframes drift-b { 0%, 100% { transform: translate(0, 0); } }
+  @keyframes drift-c { 0%, 100% { transform: translate(0, 0); } }
 }
 </style>
 </head>
@@ -1191,66 +1301,72 @@ body::after {
   var tagStats = {};
 
   // ================================================================
-  // 光标系统
+  // 光标系统（仅桌面端）
   // ================================================================
 
-  var coreEl = document.createElement('div');
-  coreEl.className = 'cursor-core';
-  document.body.appendChild(coreEl);
+  var isTouch = ('ontouchstart' in window) || (window.matchMedia('(pointer: coarse)').matches);
 
-  var ringEl = document.createElement('div');
-  ringEl.className = 'cursor-ring';
-  document.body.appendChild(ringEl);
-
-  var glowEl = document.createElement('div');
-  glowEl.className = 'cursor-glow';
-  document.body.appendChild(glowEl);
-
+  var coreEl, ringEl, glowEl;
   var mx = -100, my = -100;
-  var coreX = -100, coreY = -100;
-  var ringX = -100, ringY = -100;
-  var glowX = -100, glowY = -100;
 
-  document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+  if (!isTouch) {
+    coreEl = document.createElement('div');
+    coreEl.className = 'cursor-core';
+    document.body.appendChild(coreEl);
 
-  function tickCursor() {
-    coreX += (mx - coreX) * 0.35;
-    coreY += (my - coreY) * 0.35;
-    ringX += (mx - ringX) * 0.14;
-    ringY += (my - ringY) * 0.14;
-    glowX += (mx - glowX) * 0.06;
-    glowY += (my - glowY) * 0.06;
+    ringEl = document.createElement('div');
+    ringEl.className = 'cursor-ring';
+    document.body.appendChild(ringEl);
 
-    coreEl.style.left = coreX + 'px';
-    coreEl.style.top = coreY + 'px';
-    ringEl.style.left = ringX + 'px';
-    ringEl.style.top = ringY + 'px';
-    glowEl.style.left = glowX + 'px';
-    glowEl.style.top = glowY + 'px';
+    glowEl = document.createElement('div');
+    glowEl.className = 'cursor-glow';
+    document.body.appendChild(glowEl);
 
-    requestAnimationFrame(tickCursor);
+    var coreX = -100, coreY = -100;
+    var ringX = -100, ringY = -100;
+    var glowX = -100, glowY = -100;
+
+    document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+
+    function tickCursor() {
+      coreX += (mx - coreX) * 0.35;
+      coreY += (my - coreY) * 0.35;
+      ringX += (mx - ringX) * 0.14;
+      ringY += (my - ringY) * 0.14;
+      glowX += (mx - glowX) * 0.06;
+      glowY += (my - glowY) * 0.06;
+
+      coreEl.style.left = coreX + 'px';
+      coreEl.style.top = coreY + 'px';
+      ringEl.style.left = ringX + 'px';
+      ringEl.style.top = ringY + 'px';
+      glowEl.style.left = glowX + 'px';
+      glowEl.style.top = glowY + 'px';
+
+      requestAnimationFrame(tickCursor);
+    }
+    tickCursor();
+
+    // 光标状态切换
+    document.addEventListener('mouseover', function(e) {
+      if (e.target.closest('.pill, .btn-copy, .sort-toggle, .tag-pill, a, input, button')) {
+        coreEl.classList.add('on-link');
+        ringEl.classList.add('on-link');
+      }
+      if (e.target.closest('.skill-card')) {
+        ringEl.classList.add('on-card');
+      }
+    });
+    document.addEventListener('mouseout', function(e) {
+      if (e.target.closest('.pill, .btn-copy, .sort-toggle, .tag-pill, a, input, button')) {
+        coreEl.classList.remove('on-link');
+        ringEl.classList.remove('on-link');
+      }
+      if (e.target.closest('.skill-card')) {
+        ringEl.classList.remove('on-card');
+      }
+    });
   }
-  tickCursor();
-
-  // 光标状态切换
-  document.addEventListener('mouseover', function(e) {
-    if (e.target.closest('.pill, .btn-copy, .sort-toggle, .tag-pill, a, input, button')) {
-      coreEl.classList.add('on-link');
-      ringEl.classList.add('on-link');
-    }
-    if (e.target.closest('.skill-card')) {
-      ringEl.classList.add('on-card');
-    }
-  });
-  document.addEventListener('mouseout', function(e) {
-    if (e.target.closest('.pill, .btn-copy, .sort-toggle, .tag-pill, a, input, button')) {
-      coreEl.classList.remove('on-link');
-      ringEl.classList.remove('on-link');
-    }
-    if (e.target.closest('.skill-card')) {
-      ringEl.classList.remove('on-card');
-    }
-  });
 
   // ================================================================
   // Hero 粒子
@@ -1259,7 +1375,8 @@ body::after {
   (function() {
     var c = document.getElementById('heroParticles');
     if (!c) return;
-    for (var i = 0; i < 24; i++) {
+    var particleCount = window.innerWidth < 768 ? 8 : 24;
+    for (var i = 0; i < particleCount; i++) {
       var p = document.createElement('div');
       p.className = 'hero-particle';
       var sz = Math.random() * 2.5 + 0.8;
@@ -1282,30 +1399,34 @@ body::after {
   var heroContent = document.querySelector('.hero-content');
   var scrollHint = document.getElementById('scrollHint');
 
-  window.addEventListener('scroll', function() {
-    var s = window.scrollY;
-    if (s < window.innerHeight) {
-      var r = s / window.innerHeight;
-      if (heroContent) {
-        heroContent.style.transform = 'translateY(' + (r * 50) + 'px)';
-        heroContent.style.opacity = 1 - r * 0.9;
+  if (!isTouch) {
+    window.addEventListener('scroll', function() {
+      var s = window.scrollY;
+      if (s < window.innerHeight) {
+        var r = s / window.innerHeight;
+        if (heroContent) {
+          heroContent.style.transform = 'translateY(' + (r * 50) + 'px)';
+          heroContent.style.opacity = 1 - r * 0.9;
+        }
+        if (scrollHint) scrollHint.style.opacity = Math.max(0, 1 - s / 200);
       }
-      if (scrollHint) scrollHint.style.opacity = Math.max(0, 1 - s / 200);
-    }
-  }, { passive: true });
+    }, { passive: true });
+  }
 
   // ================================================================
   // 胶囊涟漪位置
   // ================================================================
 
-  document.addEventListener('mousemove', function(e) {
-    var pill = e.target.closest('.pill');
-    if (pill) {
-      var r = pill.getBoundingClientRect();
-      pill.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100) + '%');
-      pill.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100) + '%');
-    }
-  });
+  if (!isTouch) {
+    document.addEventListener('mousemove', function(e) {
+      var pill = e.target.closest('.pill');
+      if (pill) {
+        var r = pill.getBoundingClientRect();
+        pill.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100) + '%');
+        pill.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100) + '%');
+      }
+    });
+  }
 
   // ================================================================
   // 数据加载
@@ -1526,6 +1647,7 @@ body::after {
   // ================================================================
 
   function setupMouseTrack() {
+    if (isTouch) return;
     document.querySelectorAll('.skill-card').forEach(function(card) {
       card.addEventListener('mousemove', function(e) {
         var r = card.getBoundingClientRect();
