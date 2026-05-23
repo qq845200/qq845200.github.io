@@ -44,6 +44,43 @@ body {
 a { color: inherit; text-decoration: none; }
 
 /* ================================================================
+   自定义光标 + 全局光追
+   ================================================================ */
+
+.cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: rgba(90,200,250,0.80);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: screen;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90,200,250,0.05) 0%, rgba(90,200,250,0.015) 35%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  will-change: left, top;
+}
+
+body:hover .cursor-dot { opacity: 1; }
+
+/* 鼠标在交互元素上时放大 */
+.cursor-dot.hovering {
+  width: 14px; height: 14px;
+  background: rgba(90,200,250,0.50);
+  box-shadow: 0 0 16px rgba(90,200,250,0.30);
+}
+
+/* ================================================================
    全屏 Hero
    ================================================================ */
 
@@ -126,6 +163,28 @@ a { color: inherit; text-decoration: none; }
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%);
 }
 
+/* Hero 浮动粒子 */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(90,200,250,0.25);
+  animation: particle-float linear infinite;
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
+}
+
 /* Hero 内容 */
 .hero-content {
   position: relative;
@@ -200,14 +259,15 @@ a { color: inherit; text-decoration: none; }
   font-size: 1em;
   color: var(--text);
   outline: none;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
 }
 
 .hero-search input:focus {
-  border-color: rgba(90,200,250,0.35);
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 0 0 4px rgba(90,200,250,0.06), 0 8px 32px rgba(0,0,0,0.2);
+  border-color: rgba(90,200,250,0.40);
+  background: rgba(255,255,255,0.09);
+  box-shadow: 0 0 0 4px rgba(90,200,250,0.08), 0 0 40px rgba(90,200,250,0.06), 0 12px 40px rgba(0,0,0,0.25);
+  transform: scale(1.02);
 }
 
 .hero-search input::placeholder { color: var(--text-3); font-weight: 300; }
@@ -235,7 +295,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.84em;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--glass);
   border: 1px solid var(--glass-border);
   color: var(--text-2);
@@ -243,7 +303,21 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+  overflow: hidden;
 }
+
+/* 胶囊涟漪效果 */
+.pill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--px, 50%) var(--py, 50%), rgba(90,200,250,0.15), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.pill:hover::after { opacity: 1; }
 
 .pill:hover { background: var(--glass-2); color: var(--text); }
 
@@ -434,10 +508,14 @@ a { color: inherit; text-decoration: none; }
 .skill-card:hover {
   background: var(--glass-2);
   border-color: rgba(255,255,255,0.12);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.30);
 }
 .skill-card:hover::after { opacity: 1; }
+
+/* 卡片 3D 倾斜 */
+.skill-card { transform-style: preserve-3d; perspective: 800px; }
+.skill-card .card-inner { transition: transform 0.15s ease-out; transform-style: preserve-3d; }
 
 /* === Featured 卡片（前3名） === */
 .skill-card.featured {
@@ -451,9 +529,46 @@ a { color: inherit; text-decoration: none; }
 .skill-card.featured .skill-desc { -webkit-line-clamp: 4; display: block; }
 .skill-card.featured .skill-stars { font-size: 1.1em; }
 
-/* Featured 始终发光边框 */
+/* Featured 始终发光边框 — 流光动画 */
 .skill-card.featured::before {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), rgba(255,255,255,0.25), rgba(255,255,255,0.18), transparent);
+  animation: shimmer-line 4s ease-in-out infinite;
+}
+
+@keyframes shimmer-line {
+  0%, 100% { opacity: 0.6; left: 15%; right: 15%; }
+  50% { opacity: 1; left: 5%; right: 5%; }
+}
+
+/* Featured 彩虹边框流光 */
+.skill-card.featured .featured-border {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    rgba(90,200,250,0.30),
+    rgba(191,90,242,0.20),
+    rgba(255,159,10,0.15),
+    rgba(90,200,250,0.25),
+    rgba(191,90,242,0.30)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: rotate-border 6s linear infinite;
+}
+
+@keyframes rotate-border {
+  to { --border-angle: 360deg; }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
 /* 微浮动 */
@@ -823,10 +938,10 @@ a { color: inherit; text-decoration: none; }
 
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in.visible { opacity: 1; transform: translateY(0) scale(1); }
 
 /* ================================================================
    响应式
@@ -855,6 +970,11 @@ a { color: inherit; text-decoration: none; }
   .hero-pills { gap: 6px; }
   .pill { padding: 6px 14px; font-size: 0.8em; }
 }
+
+/* 移动端隐藏自定义光标 */
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-glow { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -867,6 +987,7 @@ a { color: inherit; text-decoration: none; }
     <div class="orb orb-3"></div>
     <div class="orb orb-4"></div>
     <div class="hero-grid"></div>
+    <div class="hero-particles" id="heroParticles"></div>
   </div>
 
   <div class="hero-content">
@@ -1081,6 +1202,7 @@ a { color: inherit; text-decoration: none; }
       var installCmd = getInstallCmd(s);
 
       return '<div class="skill-card fade-in ' + cls + '" data-idx="' + i + '">' +
+        (i < 3 ? '<div class="featured-border"></div>' : '') +
         '<div class="skill-header">' +
           '<div class="skill-icon ' + iconClass + '">' + s._category[0].toUpperCase() + '</div>' +
           '<div class="skill-title-group">' +
@@ -1104,6 +1226,8 @@ a { color: inherit; text-decoration: none; }
 
     // 鼠标追踪
     setupMouseTrack();
+    // 卡片倾斜
+    setupCardTilt();
     // 重新绑定淡入
     setupFadeIn();
   }
@@ -1229,6 +1353,139 @@ a { color: inherit; text-decoration: none; }
       observer.observe(el);
     });
   }
+
+  // ================================================================
+  // 自定义光标
+  // ================================================================
+
+  var cursorDot = document.createElement('div');
+  cursorDot.className = 'cursor-dot';
+  document.body.appendChild(cursorDot);
+
+  var cursorGlow = document.createElement('div');
+  cursorGlow.className = 'cursor-glow';
+  document.body.appendChild(cursorGlow);
+
+  var mx = -100, my = -100;
+  var dotX = -100, dotY = -100;
+  var glowX = -100, glowY = -100;
+
+  document.addEventListener('mousemove', function(e) {
+    mx = e.clientX;
+    my = e.clientY;
+  }, { passive: true });
+
+  function animateCursor() {
+    dotX += (mx - dotX) * 0.25;
+    dotY += (my - dotY) * 0.25;
+    glowX += (mx - glowX) * 0.08;
+    glowY += (my - glowY) * 0.08;
+    cursorDot.style.left = dotX + 'px';
+    cursorDot.style.top = dotY + 'px';
+    cursorGlow.style.left = glowX + 'px';
+    cursorGlow.style.top = glowY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // 鼠标进入交互元素时放大光标
+  document.addEventListener('mouseover', function(e) {
+    var target = e.target.closest('.pill, .btn-copy, .sort-toggle, .tag-pill, .skill-card a, input, button');
+    if (target) cursorDot.classList.add('hovering');
+  });
+  document.addEventListener('mouseout', function(e) {
+    var target = e.target.closest('.pill, .btn-copy, .sort-toggle, .tag-pill, .skill-card a, input, button');
+    if (target) cursorDot.classList.remove('hovering');
+  });
+
+  // ================================================================
+  // Hero 浮动粒子
+  // ================================================================
+
+  (function createParticles() {
+    var container = document.getElementById('heroParticles');
+    if (!container) return;
+    for (var i = 0; i < 20; i++) {
+      var p = document.createElement('div');
+      p.className = 'hero-particle';
+      var size = Math.random() * 3 + 1;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.bottom = '-10px';
+      p.style.animationDuration = (Math.random() * 12 + 10) + 's';
+      p.style.animationDelay = (Math.random() * 15) + 's';
+      p.style.opacity = Math.random() * 0.3 + 0.1;
+      container.appendChild(p);
+    }
+  })();
+
+  // ================================================================
+  // 胶囊涟漪位置追踪
+  // ================================================================
+
+  document.addEventListener('mousemove', function(e) {
+    var pill = e.target.closest('.pill');
+    if (pill) {
+      var rect = pill.getBoundingClientRect();
+      pill.style.setProperty('--px', ((e.clientX - rect.left) / rect.width * 100) + '%');
+      pill.style.setProperty('--py', ((e.clientY - rect.top) / rect.height * 100) + '%');
+    }
+  });
+
+  // ================================================================
+  // 卡片 3D 倾斜效果
+  // ================================================================
+
+  function setupCardTilt() {
+    document.querySelectorAll('.skill-card').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width;
+        var y = (e.clientY - rect.top) / rect.height;
+        var tiltX = (y - 0.5) * 4;
+        var tiltY = (x - 0.5) * -4;
+        card.style.transform = 'perspective(800px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateY(-3px) scale(1.01)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+        card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        setTimeout(function() { card.style.transition = ''; }, 500);
+      });
+      card.addEventListener('mouseenter', function() {
+        card.style.transition = 'background 0.3s, border-color 0.3s, box-shadow 0.3s';
+      });
+    });
+  }
+
+  // ================================================================
+  // Hero 视差滚动
+  // ================================================================
+
+  var heroContent = document.querySelector('.hero-content');
+  var orbs = document.querySelectorAll('.orb');
+
+  window.addEventListener('scroll', function() {
+    var scrollY = window.scrollY;
+    if (scrollY < window.innerHeight) {
+      var ratio = scrollY / window.innerHeight;
+      if (heroContent) heroContent.style.transform = 'translateY(' + (ratio * 60) + 'px)';
+      if (heroContent) heroContent.style.opacity = 1 - ratio * 0.8;
+      orbs.forEach(function(orb, i) {
+        var speed = 0.1 + i * 0.05;
+        orb.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+      });
+    }
+  }, { passive: true });
+
+  // ================================================================
+  // 滚动提示自动隐藏
+  // ================================================================
+
+  var scrollHint = document.querySelector('.scroll-hint');
+  window.addEventListener('scroll', function() {
+    if (scrollHint) scrollHint.style.opacity = window.scrollY > 100 ? '0' : '1';
+  }, { passive: true });
 
   // 启动
   loadSkills();
