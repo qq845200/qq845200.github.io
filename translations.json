@@ -1,0 +1,162 @@
+{
+  "affaan-m/ECC": {
+    "cnName": "技能工具",
+    "cnDesc": "座席线束性能优化系统。Claude Code、Codex、Opencode、Cursor等的技能、本能、记忆、安全和研究优先开发。"
+  },
+  "multica-ai/andrej-karpathy-skills": {
+    "cnName": "代码工具",
+    "cnDesc": "一个用于改进Claude Code行为的CLAUDE.md文件，源自Andrej Karpathy对LLM编码陷阱的观察。"
+  },
+  "mattpocock/skills": {
+    "cnName": "技能工具",
+    "cnDesc": "真正工程师的技能。直接来自我的.claude目录。"
+  },
+  "nextlevelbuilder/ui-ux-pro-max-skill": {
+    "cnName": "UIUX技能",
+    "cnDesc": "为构建专业UI/UX多平台提供设计智能的人工智能技能"
+  },
+  "JuliusBrussee/caveman": {
+    "cnName": "技能工具",
+    "cnDesc": "🪨 为什么在很少令牌欺骗时使用许多令牌— Claude Code技能通过像穴居人一样说话来削减65 ％的令牌"
+  },
+  "ComposioHQ/awesome-claude-skills": {
+    "cnName": "精选集",
+    "cnDesc": "用于自定义Claude AI工作流程的精选Claude技能、资源和工具列表"
+  },
+  "safishamsi/graphify": {
+    "cnName": "技能工具",
+    "cnDesc": "AI编码助理技能（ Claude Code、Codex、OpenCode、Cursor、Gemini CLI等）。将任何代码、SQL架构、R脚本、shell脚本、文档、论文、图像或视频文件夹转换为可查询"
+  },
+  "nexu-io/open-design": {
+    "cnName": "设计",
+    "cnDesc": "🎨 本地优先，开源Claude Design替代方案。⚡19技能· ✨ 71品牌级设计系统🖼生成网络·桌面·移动原型·幻灯片·图像·视频· HyperFrames沙 📦盒"
+  },
+  "santifer/career-ops": {
+    "cnName": "技能工具",
+    "cnDesc": "基于Claude Code构建的人工智能求职系统。14种技能模式、Go仪表板、PDF生成、批量处理。"
+  },
+  "jeecgboot/JeecgBoot": {
+    "cnName": "技能工具",
+    "cnDesc": "AI 低代码平台，「低代码 + 零代码」双模式驱动：低代码一键生成前后端代码，零代码 5 分钟搭建系统，AI Skills 一句话画流程、设计表单、生成整套系统。内置 AI聊天、知识库、流程编排、MCP插件等，兼容主流大模型。引领「AI 生成 → 在线配置 → 代码生成 → 手工合并->AI修改」开发模式，消除 Java 项目 80% 的重复工作，提效而不失灵活。"
+  },
+  "addyosmani/agent-skills": {
+    "cnName": "代理",
+    "cnDesc": "AI编码代理的生产级工程技能。"
+  },
+  "zhayujie/CowAgent": {
+    "cnName": "技能工具",
+    "cnDesc": "CowAgent (chatgpt-on-wechat) 是基于大模型的超级AI助理 ，能主动思考和任务规划、访问操作系统和外部资源、创造和执行 Skills、通过长期记忆和知识库不断成长 ，比 OpenClaw更轻量和便捷。同时支持微信、飞书、钉钉、企微、、公众号、网页等接入 QQ ，可选择 DeepSeek/OpenAI/Claude/Gemini/MiniMax/Qwen/GLM/LinkAI ，能处理文"
+  },
+  "hesreallyhim/awesome-claude-code": {
+    "cnName": "精选集代码",
+    "cnDesc": "Anthropic为Claude Code精心策划的精湛技能、钩子、斜杠命令、代理编排器、应用程序和插件列表"
+  },
+  "sickn33/antigravity-awesome-skills": {
+    "cnName": "精选集",
+    "cnDesc": "可安装的GitHub库，包含1,400多种代理技能，适用于Claude Code、Cursor、Codex CLI、Gemini CLI、Antigravity等。包括安装程序CLI、捆绑包、工作流程和官方/社区技能"
+  },
+  "wshobson/agents": {
+    "cnName": "插件工具",
+    "cnDesc": "Claude Code、Codex CLI、Cursor、OpenCode和Gemini CLI的多线程代理插件市场"
+  },
+  "anthropics/claude-plugins-official": {
+    "cnName": "插件工具",
+    "cnDesc": "由Anthropic管理的高质量Claude Code插件的官方目录。"
+  },
+  "jarrodwatts/claude-hud": {
+    "cnName": "插件工具",
+    "cnDesc": "Claude Code插件，显示正在发生的事情-上下文使用、活动工具、运行代理和待办事项进度"
+  },
+  "VoltAgent/awesome-agent-skills": {
+    "cnName": "精选集代理",
+    "cnDesc": "来自官方开发团队和社区的1000多种代理技能的精选集合，与Claude Code、Codex、Gemini CLI、Cursor等兼容。"
+  },
+  "openai/codex-plugin-cc": {
+    "cnName": "插件",
+    "cnDesc": "使用Claude Code的Codex来查看代码或委派任务。"
+  },
+  "EveryInc/compound-engineering-plugin": {
+    "cnName": "插件",
+    "cnDesc": "Claude Code、Codex、Cursor等的官方复合工程插件"
+  },
+  "liyupi/ai-guide": {
+    "cnName": "技能工具",
+    "cnDesc": "程序员鱼皮的 AI 资源大全 + Vibe Coding 零基础教程，分享 OpenClaw 保姆级教程、大模型玩法（DeepSeek / GPT / Gemini / Claude）、最新 AI 资讯、Prompt 提示词大全、AI 知识百科（Agent Skills / RAG / MCP / A2A）、AI 编程教程（Harness Engineering）、AI 工具用法（Cursor /"
+  },
+  "wanshuiyin/Auto-claude-code-research-in-sleep": {
+    "cnName": "代码",
+    "cnDesc": "ARIS ⚔️ （自动睡眠研究） —用于自主机器学习研究的轻量级Markdown技能：跨模型审核循环、创意发现和实验自动化。无框架，无锁定—适用于无线网络"
+  },
+  "heilcheng/awesome-agent-skills": {
+    "cnName": "精选集代理",
+    "cnDesc": "教程、指南和座席技能目录"
+  },
+  "golutra/golutra": {
+    "cnName": "代理工具",
+    "cnDesc": "用于自动化、工作流程和开发人员工具的多代理AI编排平台。Golutra将Codex、Claude Code和OpenClaw转换为具有并行执行、任务Orch的统一代理系统"
+  },
+  "taishi-i/awesome-ChatGPT-repositories": {
+    "cnName": "精选集",
+    "cnDesc": "专用于与ChatGPT、OpenAI API和Codex相关的开源GitHub存储库的资源列表。可通过Claude Code技能进行搜索。"
+  },
+  "leo-lilinxiao/codex-autoresearch": {
+    "cnName": "技能工具",
+    "cnDesc": "Codex Autoresearch Skill — Codex的自我导向迭代系统，可连续循环：修改、验证、保留或丢弃，并无限期重复。灵感来自Karpathy的自动搜索"
+  },
+  "CoderGamester/mcp-unity": {
+    "cnName": "插件工具",
+    "cnDesc": "用于连接Unity Editor的模型上下文协议(MCP)插件—专为Cursor、Claude Code、Codex、Windsurf和其他IDE设计"
+  },
+  "DeadWaveWave/opencove": {
+    "cnName": "代理工具",
+    "cnDesc": "为代理、任务、知识和研究提供无限的画布工作空间。Claude Code、Codex、终端、任务和笔记的无限画布。"
+  },
+  "Prat011/awesome-llm-skills": {
+    "cnName": "精选集",
+    "cnDesc": "用于自定义AI Agent工作流程的精选LLM和AI Agent技能、资源和工具列表-适用于Claude Code、Codex、Gemini CLI和您的自定义AI Agent"
+  },
+  "nex-crm/wuphf": {
+    "cnName": "UI工具",
+    "cnDesc": "WUPHF是一个由人工智能员工组成的协作办公室，他们建立和维护自己的知识库，永远不会失去您交给他们的任务的背景。支持Claude Code、Codex、OpenClaw和本地LLM"
+  },
+  "caliber-ai-org/ai-setup": {
+    "cnName": "配置",
+    "cnDesc": "只需一个命令，即可连续同步您的AI设置。Codebase为Claude Code、Cursor和Codex量身定制适合的代理技能、MCP和配置文件。"
+  },
+  "DeepMyst/Mysti": {
+    "cnName": "代理工具",
+    "cnDesc": "VS Code代理的AI编码梦之队。Claude Code + openai Codex以头脑风暴模式进行协作，讨论解决方案，并为您的代码合成最佳方法。"
+  },
+  "777genius/agent-teams-ai": {
+    "cnName": "代理",
+    "cnDesc": "您是首席技术官，客服代表是您的团队。他们自己处理任务，互相传递消息，并审查彼此的工作。您只需观看看板并发出高级命令。Codex/Claude/OpenC"
+  },
+  "jarrodwatts/claude-delegator": {
+    "cnName": "代码工具",
+    "cnDesc": "直接从Claude Code内部将任务委托给Codex和Gemini。"
+  },
+  "asklokesh/loki-mode": {
+    "cnName": "代理工具",
+    "cnDesc": "多代理自主SDLC框架。指定到已部署的应用程序。PRD、GitHub问题、OpenAPI/JSON/YAML或单行简报。5个AI提供商， 11个质量门。"
+  },
+  "agent-sh/agentsys": {
+    "cnName": "技能工具",
+    "cnDesc": "AI编写代码。这使其他一切自动化· 24个插件· 50个代理· 45个技能·适用于Claude Code、OpenCode、Codex、Cursor、Kiro。"
+  },
+  "fcakyon/claude-codex-settings": {
+    "cnName": "技能工具",
+    "cnDesc": "我的个人Claude Code和OpenAI Codex设置包含我每天使用的经过战斗测试的技能、插件、挂钩和代理。"
+  },
+  "milisp/codexia": {
+    "cnName": "技能工具",
+    "cnDesc": "用于Codex CLI + Claude Code的代理工作站—带任务调度程序、git工作树和远程控制、技能管理"
+  },
+  "huggingface/upskill": {
+    "cnName": "技能工具",
+    "cnDesc": "为代码代理生成和评估代理技能，如Claude Code、Open Code、OpenAI Codex"
+  },
+  "gmickel/flow-next": {
+    "cnName": "插件工具",
+    "cnDesc": "适用于Claude Code、OpenAI Codex和Factory Droid的规范驱动AI工作流插件。零步骤任务跟踪、工作者子代理、Ralph自主模式、跨模型审核。"
+  }
+}
