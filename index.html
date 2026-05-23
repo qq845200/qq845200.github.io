@@ -1178,6 +1178,131 @@ body::after {
   .footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
 }
 
+/* 收藏按钮 */
+.btn-bookmark {
+  padding: 6px 14px; border-radius: 9px; font-size: 0.74em; font-weight: 500;
+  cursor: none; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text-2); font-family: inherit; transition: all 0.3s var(--ease-out);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.btn-bookmark:hover { border-color: rgba(251,191,36,0.30); color: var(--amber); background: rgba(251,191,36,0.04); transform: translateY(-1px); }
+.btn-bookmark.bookmarked { border-color: rgba(251,191,36,0.25); color: var(--amber); background: rgba(251,191,36,0.06); }
+
+/* 趋势排行 */
+.trend-section { padding: 40px 0 20px; }
+.trend-section .section-title { font-size: 0.76em; font-weight: 600; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+.trend-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.trend-card {
+  background: var(--glass); backdrop-filter: blur(40px) saturate(150%); -webkit-backdrop-filter: blur(40px) saturate(150%);
+  border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 18px;
+  display: flex; align-items: center; gap: 14px; transition: all 0.3s var(--ease-out); cursor: none;
+}
+.trend-card:hover { background: var(--glass-2); border-color: rgba(255,255,255,0.10); transform: translateY(-2px); }
+.trend-rank { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.82em; font-weight: 700; flex-shrink: 0; }
+.trend-rank.r1 { background: linear-gradient(135deg, #f59e0b, #fbbf24); color: #000; }
+.trend-rank.r2 { background: linear-gradient(135deg, #94a3b8, #cbd5e1); color: #000; }
+.trend-rank.r3 { background: linear-gradient(135deg, #b45309, #d97706); color: #000; }
+.trend-rank.rn { background: var(--glass-2); color: var(--text-3); }
+.trend-info { flex: 1; min-width: 0; }
+.trend-name { font-size: 0.86em; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.trend-name a { color: var(--text); transition: color 0.2s; }
+.trend-name a:hover { color: var(--cyan); }
+.trend-meta { font-size: 0.72em; color: var(--text-3); margin-top: 2px; display: flex; gap: 10px; }
+.trend-badge { padding: 3px 10px; border-radius: 6px; font-size: 0.66em; font-weight: 600; flex-shrink: 0; }
+.trend-badge.hot { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.15); color: #ef4444; }
+.trend-badge.rising { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.15); color: #10b981; }
+.trend-badge.newb { background: rgba(90,200,250,0.08); border: 1px solid rgba(90,200,250,0.15); color: var(--cyan); }
+
+/* 详情弹窗 */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.70); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  z-index: 9990; opacity: 0; visibility: hidden; transition: all 0.35s var(--ease-out);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal-content {
+  background: rgba(18,18,30,0.95); backdrop-filter: blur(60px) saturate(180%); -webkit-backdrop-filter: blur(60px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; width: 100%; max-width: 640px; max-height: 85vh;
+  overflow-y: auto; padding: 32px; transform: translateY(30px) scale(0.95); transition: transform 0.4s var(--ease-out);
+  position: relative; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.08) transparent;
+}
+.modal-overlay.open .modal-content { transform: translateY(0) scale(1); }
+.modal-close {
+  position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-2);
+  display: flex; align-items: center; justify-content: center; cursor: none; transition: all 0.3s var(--ease-out); font-size: 1.2em;
+}
+.modal-close:hover { background: var(--glass-2); color: var(--text); transform: rotate(90deg); }
+.modal-title { font-size: 1.3em; font-weight: 700; margin-bottom: 4px; }
+.modal-title a { color: var(--text); transition: color 0.2s; }
+.modal-title a:hover { color: var(--cyan); }
+.modal-cn { font-size: 0.78em; color: rgba(90,200,250,0.80); margin-bottom: 6px; }
+.modal-author { font-size: 0.82em; color: var(--text-3); margin-bottom: 16px; }
+.modal-desc { font-size: 0.92em; color: var(--text-2); line-height: 1.75; margin-bottom: 20px; }
+.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.modal-stats-row { display: flex; gap: 20px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.modal-stat { font-size: 0.82em; color: var(--text-3); display: flex; align-items: center; gap: 6px; }
+.modal-stat svg { width: 16px; height: 16px; }
+.modal-actions { display: flex; gap: 10px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.modal-btn {
+  padding: 10px 20px; border-radius: 12px; font-size: 0.85em; font-weight: 500; cursor: none;
+  font-family: inherit; transition: all 0.3s var(--ease-out); display: inline-flex; align-items: center; gap: 6px;
+}
+.modal-btn-primary { background: rgba(90,200,250,0.08); border: 1px solid rgba(90,200,250,0.20); color: var(--cyan); }
+.modal-btn-primary:hover { background: rgba(90,200,250,0.14); transform: translateY(-1px); }
+.modal-btn-secondary { background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-2); }
+.modal-btn-secondary:hover { background: var(--glass-2); color: var(--text); transform: translateY(-1px); }
+.modal-btn-amber { background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.18); color: var(--amber); }
+.modal-btn-amber:hover { background: rgba(251,191,36,0.12); transform: translateY(-1px); }
+.modal-btn-amber.bookmarked { background: rgba(251,191,36,0.10); border-color: rgba(251,191,36,0.30); }
+
+/* 评论区 */
+.comments-area { margin-top: 4px; }
+.comments-title { font-size: 0.92em; font-weight: 600; margin-bottom: 16px; color: var(--text-2); }
+.comment-form { margin-bottom: 20px; }
+.comment-input-row { display: flex; gap: 10px; margin-bottom: 10px; }
+.comment-input {
+  flex: 1; padding: 10px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; color: var(--text); font-size: 0.85em; font-family: inherit; outline: none; transition: border-color 0.3s;
+}
+.comment-input:focus { border-color: rgba(90,200,250,0.25); }
+.comment-textarea {
+  width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; color: var(--text); font-size: 0.85em; font-family: inherit; outline: none;
+  resize: vertical; min-height: 80px; transition: border-color 0.3s;
+}
+.comment-textarea:focus { border-color: rgba(90,200,250,0.25); }
+.comment-submit {
+  padding: 8px 20px; border-radius: 10px; background: rgba(90,200,250,0.08); border: 1px solid rgba(90,200,250,0.18);
+  color: var(--cyan); font-size: 0.82em; font-weight: 500; cursor: none; font-family: inherit; transition: all 0.3s var(--ease-out); margin-top: 8px;
+}
+.comment-submit:hover { background: rgba(90,200,250,0.14); transform: translateY(-1px); }
+.comment-list { display: flex; flex-direction: column; gap: 12px; }
+.comment-item { padding: 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 14px; }
+.comment-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.comment-author { font-size: 0.82em; font-weight: 600; color: var(--text); }
+.comment-time { font-size: 0.72em; color: var(--text-3); }
+.comment-body { font-size: 0.85em; color: var(--text-2); line-height: 1.6; }
+.comment-empty { font-size: 0.82em; color: var(--text-3); text-align: center; padding: 20px; }
+.gh-discuss { margin-top: 12px; text-align: center; }
+.gh-discuss a { font-size: 0.78em; color: var(--text-3); transition: color 0.2s; }
+.gh-discuss a:hover { color: var(--cyan); }
+
+/* 弹窗/趋势 移动端 */
+@media (max-width: 768px) {
+  .modal-content { padding: 24px; border-radius: 18px; max-height: 90vh; }
+  .trend-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .modal-content { padding: 20px; border-radius: 16px; }
+  .modal-actions { flex-wrap: wrap; }
+  .comment-input-row { flex-direction: column; }
+}
+@media (pointer: coarse) {
+  .trend-card:active { background: var(--glass-2); transform: scale(0.98); }
+  .modal-btn:active { transform: scale(0.96); }
+}
+
 /* 移动端性能优化：减少动画 */
 @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
   .skill-card.featured { animation: none; }
@@ -1218,6 +1343,7 @@ body::after {
       <div class="pill" data-category="claude" onclick="filterCategory('claude', this)">Claude Code <span class="pill-count" id="count-claude">0</span></div>
       <div class="pill" data-category="codex" onclick="filterCategory('codex', this)">Codex <span class="pill-count" id="count-codex">0</span></div>
       <div class="pill" data-category="openclaw" onclick="filterCategory('openclaw', this)">OpenClaw <span class="pill-count" id="count-openclaw">0</span></div>
+      <div class="pill" data-category="bookmarked" onclick="filterCategory('bookmarked', this)" id="pill-bookmark">已收藏 <span class="pill-count" id="count-bookmark">0</span></div>
     </div>
 
     <div class="hero-stats">
@@ -1266,6 +1392,13 @@ body::after {
     </div>
   </div>
 
+  <div class="trend-section fade-in" id="trendSection">
+    <div class="section-title">趋势排行</div>
+    <div class="trend-grid" id="trendGrid">
+      <div class="trend-card"><div class="trend-info"><div class="trend-name">加载中...</div></div></div>
+    </div>
+  </div>
+
   <div class="blog-section" id="blog">
     <div class="section-title">最新文章</div>
     <div class="blog-grid">
@@ -1287,6 +1420,13 @@ body::after {
   <p>2026 AI Skills Store · 数据来自 <a href="https://github.com" target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/qq845200" target="_blank" rel="noopener">qq845200</a></p>
 </div>
 
+<div class="modal-overlay" id="skillModal">
+  <div class="modal-content" id="modalContent">
+    <button class="modal-close" onclick="closeSkillModal()">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -1299,6 +1439,38 @@ body::after {
   var searchTerm = '';
   var translations = {};
   var tagStats = {};
+
+  // ================================================================
+  // 收藏系统 (localStorage)
+  // ================================================================
+
+  var BK_KEY = 'ai-skills-bookmarks';
+
+  function getBookmarks() { try { return JSON.parse(localStorage.getItem(BK_KEY) || '[]'); } catch(e) { return []; } }
+  function saveBookmarks(arr) { localStorage.setItem(BK_KEY, JSON.stringify(arr)); }
+  function isBookmarked(fn) { return getBookmarks().indexOf(fn) !== -1; }
+  function updateBookmarkCount() {
+    var el = document.getElementById('count-bookmark');
+    if (el) el.textContent = getBookmarks().length;
+  }
+
+  window.toggleBookmark = function(event, fullName) {
+    event.stopPropagation();
+    var bk = getBookmarks();
+    var idx = bk.indexOf(fullName);
+    if (idx === -1) { bk.push(fullName); showToast('已收藏'); }
+    else { bk.splice(idx, 1); showToast('已取消收藏'); }
+    saveBookmarks(bk);
+    updateBookmarkCount();
+    renderSkills();
+    // 更新弹窗中的收藏按钮
+    var modalBtn = document.querySelector('.modal-btn-amber');
+    if (modalBtn) {
+      var isNowBookmarked = bk.indexOf(fullName) !== -1;
+      modalBtn.classList.toggle('bookmarked', isNowBookmarked);
+      modalBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="' + (isNowBookmarked ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5l1.85 3.75L14 5.9l-3 2.92.71 4.13L8 10.88l-3.71 1.95L5 8.82 2 5.9l4.15-.65z"/></svg> ' + (isNowBookmarked ? '已收藏' : '收藏');
+    }
+  };
 
   // ================================================================
   // 光标系统（仅桌面端）
@@ -1466,8 +1638,13 @@ body::after {
       }
       animateCounter('stat-stars', maxStarsAll, true);
 
+      // 暴露给全局（inline onclick 需要）
+      window.allSkills = allSkills;
+
       renderTagFilters();
       renderSkills();
+      renderTrends();
+      updateBookmarkCount();
 
       // 统计条动画
       setTimeout(function() {
@@ -1501,7 +1678,9 @@ body::after {
   // ================================================================
 
   function renderSkills() {
+    var bk = getBookmarks();
     var skills = allSkills.filter(function(s) {
+      if (currentCategory === 'bookmarked') return bk.indexOf(s.fullName) !== -1;
       if (currentCategory !== 'all' && s._category !== currentCategory) return false;
       if (currentTag && (!s.tags || s.tags.indexOf(currentTag) === -1)) return false;
       if (searchTerm) {
@@ -1534,8 +1713,9 @@ body::after {
       var cnDesc = tr.cnDesc || s.description || '';
       var installCmd = getInstallCmd(s);
       var starPct = Math.min(s.stars / maxStarsAll * 100, 100);
+      var isBk = isBookmarked(s.fullName);
 
-      return '<div class="skill-card fade-in ' + cls + '" data-idx="' + i + '">' +
+      return '<div class="skill-card fade-in ' + cls + '" data-idx="' + i + '" data-fn="' + escAttr(s.fullName) + '">' +
         (i < 3 ? '<div class="featured-border"></div>' : '') +
         '<div class="cat-strip ' + barClass + '"></div>' +
         '<div class="skill-header">' +
@@ -1552,9 +1732,14 @@ body::after {
             '<span class="skill-stars"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>' + formatNum(s.stars) + '</span>' +
             '<span class="lang-badge"><span class="lang-dot ' + langClass + '"></span>' + esc(s.language || '—') + '</span>' +
           '</div>' +
-          '<button class="btn-copy" onclick="copyCmd(event, \'' + escAttr(installCmd) + '\')">' +
-            '<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 012-2h8"/></svg> 复制' +
-          '</button>' +
+          '<div style="display:flex;gap:6px;">' +
+            '<button class="btn-bookmark' + (isBk ? ' bookmarked' : '') + '" onclick="toggleBookmark(event, \'' + escAttr(s.fullName) + '\')">' +
+              '<svg width="12" height="12" viewBox="0 0 16 16" fill="' + (isBk ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5l1.85 3.75L14 5.9l-3 2.92.71 4.13L8 10.88l-3.71 1.95L5 8.82 2 5.9l4.15-.65z"/></svg> ' + (isBk ? '已藏' : '收藏') +
+            '</button>' +
+            '<button class="btn-copy" onclick="copyCmd(event, \'' + escAttr(installCmd) + '\')">' +
+              '<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 012-2h8"/></svg> 复制' +
+            '</button>' +
+          '</div>' +
         '</div>' +
         '<div class="star-bar"><div class="star-bar-fill ' + barClass + '" style="width:' + starPct + '%"></div></div>' +
       '</div>';
@@ -1562,6 +1747,7 @@ body::after {
 
     setupMouseTrack();
     setupCardTilt();
+    setupCardClick();
     setupFadeIn();
   }
 
@@ -1584,6 +1770,7 @@ body::after {
     document.querySelectorAll('.pill').forEach(function(e) { e.classList.remove('active'); });
     if (el) el.classList.add('active');
     renderSkills();
+    if (cat === 'bookmarked') showToast('显示收藏的 ' + getBookmarks().length + ' 个技能');
   };
 
   window.filterTag = function(tag, el) {
@@ -1674,6 +1861,203 @@ body::after {
   }
 
   function setupCardTilt() {} // 已在 setupMouseTrack 中合并
+
+  // 卡片点击打开详情弹窗
+  function setupCardClick() {
+    document.querySelectorAll('.skill-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('.btn-copy, .btn-bookmark, a')) return;
+        var fn = card.getAttribute('data-fn');
+        if (!fn) return;
+        var skill = allSkills.find(function(s) { return s.fullName === fn; });
+        if (skill) openSkillModal(skill);
+      });
+    });
+  }
+
+  // ================================================================
+  // 趋势排行
+  // ================================================================
+
+  function renderTrends() {
+    var now = new Date();
+    var weekAgo = new Date(now.getTime() - 7 * 24 * 3600 * 1000);
+    var monthAgo = new Date(now.getTime() - 30 * 24 * 3600 * 1000);
+
+    var sorted = allSkills.slice().sort(function(a, b) { return b.stars - a.stars; });
+
+    // 本周热门：7天内更新 + 星标高
+    var hotWeekly = sorted.filter(function(s) {
+      return s.updatedAt && new Date(s.updatedAt) >= weekAgo;
+    }).slice(0, 5);
+
+    // 快速上升：30天内更新 + 星标高（排除已在热门中的）
+    var hotNames = {};
+    hotWeekly.forEach(function(s) { hotNames[s.fullName] = true; });
+    var rising = sorted.filter(function(s) {
+      return !hotNames[s.fullName] && s.updatedAt && new Date(s.updatedAt) >= monthAgo;
+    }).slice(0, 5);
+
+    // 新上架：星标较低但最近更新
+    var newOnes = sorted.filter(function(s) {
+      return s.updatedAt && new Date(s.updatedAt) >= weekAgo && s.stars < 500;
+    }).slice(0, 5);
+
+    var grid = document.getElementById('trendGrid');
+    if (!grid) return;
+
+    var html = '';
+
+    // 本周热门
+    html += '<div style="grid-column:span 2"><div style="font-size:0.78em;font-weight:600;color:var(--text-2);margin-bottom:12px;display:flex;align-items:center;gap:6px;"><span style="color:#ef4444">HOT</span> 本周热门</div>';
+    html += hotWeekly.map(function(s, i) {
+      var tr = translations[s.fullName] || {};
+      var rankCls = i < 3 ? ' r' + (i + 1) : ' rn';
+      return '<div class="trend-card" data-fn="' + escAttr(s.fullName) + '" onclick="openSkillModal(allSkills.find(function(x){return x.fullName===\'' + escAttr(s.fullName) + '\'}))">' +
+        '<div class="trend-rank' + rankCls + '">' + (i + 1) + '</div>' +
+        '<div class="trend-info"><div class="trend-name"><a href="' + s.url + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(s.name) + (tr.cnName ? ' <span style="font-size:0.8em;color:rgba(90,200,250,0.7)">· ' + esc(tr.cnName) + '</span>' : '') + '</a></div>' +
+        '<div class="trend-meta"><span>' + formatNum(s.stars) + ' stars</span><span>' + esc(s.updatedAt) + '</span></div></div>' +
+        '<div class="trend-badge hot">HOT</div></div>';
+    }).join('');
+    html += '</div>';
+
+    // 快速上升
+    if (rising.length > 0) {
+      html += '<div><div style="font-size:0.78em;font-weight:600;color:var(--text-2);margin-bottom:12px;display:flex;align-items:center;gap:6px;"><span style="color:#10b981">UP</span> 快速上升</div>';
+      html += rising.map(function(s, i) {
+        var tr = translations[s.fullName] || {};
+        return '<div class="trend-card" style="margin-bottom:8px" onclick="openSkillModal(allSkills.find(function(x){return x.fullName===\'' + escAttr(s.fullName) + '\'}))">' +
+          '<div class="trend-rank rn">' + (i + 1) + '</div>' +
+          '<div class="trend-info"><div class="trend-name"><a href="' + s.url + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(s.name) + '</a></div>' +
+          '<div class="trend-meta"><span>' + formatNum(s.stars) + ' stars</span></div></div>' +
+          '<div class="trend-badge rising">UP</div></div>';
+      }).join('');
+      html += '</div>';
+    }
+
+    // 新上架
+    if (newOnes.length > 0) {
+      html += '<div><div style="font-size:0.78em;font-weight:600;color:var(--text-2);margin-bottom:12px;display:flex;align-items:center;gap:6px;"><span style="color:var(--cyan)">NEW</span> 新上架</div>';
+      html += newOnes.map(function(s, i) {
+        return '<div class="trend-card" style="margin-bottom:8px" onclick="openSkillModal(allSkills.find(function(x){return x.fullName===\'' + escAttr(s.fullName) + '\'}))">' +
+          '<div class="trend-rank rn">' + (i + 1) + '</div>' +
+          '<div class="trend-info"><div class="trend-name"><a href="' + s.url + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">' + esc(s.name) + '</a></div>' +
+          '<div class="trend-meta"><span>' + formatNum(s.stars) + ' stars</span></div></div>' +
+          '<div class="trend-badge newb">NEW</div></div>';
+      }).join('');
+      html += '</div>';
+    }
+
+    grid.innerHTML = html || '<div style="color:var(--text-3);font-size:0.85em">暂无趋势数据</div>';
+  }
+
+  // ================================================================
+  // 详情弹窗 + 评论
+  // ================================================================
+
+  var CM_KEY = 'ai-skills-comments';
+
+  function getComments(fn) { try { var all = JSON.parse(localStorage.getItem(CM_KEY) || '{}'); return all[fn] || []; } catch(e) { return []; } }
+  function saveComments(fn, arr) { try { var all = JSON.parse(localStorage.getItem(CM_KEY) || '{}'); all[fn] = arr; localStorage.setItem(CM_KEY, JSON.stringify(all)); } catch(e) {} }
+
+  window.openSkillModal = function(s) {
+    if (!s) return;
+    var tr = translations[s.fullName] || {};
+    var cnName = tr.cnName || '';
+    var cnDesc = tr.cnDesc || s.description || '';
+    var installCmd = getInstallCmd(s);
+    var isBk = isBookmarked(s.fullName);
+    var langClass = 'lang-' + (s.language || 'default');
+    var comments = getComments(s.fullName);
+
+    var body = document.getElementById('modalBody');
+    body.innerHTML =
+      '<div class="modal-header">' +
+        '<div class="modal-title"><a href="' + s.url + '" target="_blank" rel="noopener">' + esc(s.name) + '</a></div>' +
+        (cnName ? '<div class="modal-cn">' + esc(cnName) + '</div>' : '') +
+        '<div class="modal-author">' + esc(s.fullName) + '</div>' +
+      '</div>' +
+      '<div class="modal-desc">' + esc(cnDesc || '暂无描述') + '</div>' +
+      '<div class="modal-tags">' + (s.tags || []).map(function(t) { return '<span class="skill-tag">' + esc(t) + '</span>'; }).join('') + '</div>' +
+      '<div class="modal-stats-row">' +
+        '<div class="modal-stat"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> ' + formatNum(s.stars) + '</div>' +
+        '<div class="modal-stat"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l3 2"/></svg> ' + (s.updatedAt || '—') + '</div>' +
+        '<div class="modal-stat"><span class="lang-dot ' + langClass + '" style="display:inline-block"></span> ' + esc(s.language || '—') + '</div>' +
+        '<div class="modal-stat">Forks: ' + (s.forks || 0) + '</div>' +
+      '</div>' +
+      '<div class="modal-actions">' +
+        '<button class="modal-btn modal-btn-primary" onclick="copyModalCmd(\'' + escAttr(installCmd) + '\', this)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 012-2h8"/></svg> 复制安装命令</button>' +
+        '<button class="modal-btn modal-btn-amber' + (isBk ? ' bookmarked' : '') + '" onclick="toggleBookmark(event, \'' + escAttr(s.fullName) + '\')"><svg width="14" height="14" viewBox="0 0 16 16" fill="' + (isBk ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5l1.85 3.75L14 5.9l-3 2.92.71 4.13L8 10.88l-3.71 1.95L5 8.82 2 5.9l4.15-.65z"/></svg> ' + (isBk ? '已收藏' : '收藏') + '</button>' +
+        '<a class="modal-btn modal-btn-secondary" href="' + s.url + '" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3"/><path d="M10 2h4v4"/><path d="M7 9L14 2"/></svg> GitHub</a>' +
+      '</div>' +
+      '<div class="comments-area">' +
+        '<div class="comments-title">评论 (' + comments.length + ')</div>' +
+        '<div class="comment-form">' +
+          '<div class="comment-input-row">' +
+            '<input class="comment-input" id="commentName" placeholder="你的昵称" maxlength="30">' +
+          '</div>' +
+          '<textarea class="comment-textarea" id="commentText" placeholder="分享你的使用体验..." maxlength="500"></textarea>' +
+          '<button class="comment-submit" onclick="submitComment(\'' + escAttr(s.fullName) + '\')">发表评论</button>' +
+        '</div>' +
+        '<div class="comment-list" id="commentList">' +
+          (comments.length === 0 ? '<div class="comment-empty">暂无评论，来发表第一条吧</div>' :
+            comments.slice().reverse().map(function(c) {
+              return '<div class="comment-item"><div class="comment-header"><span class="comment-author">' + esc(c.name) + '</span><span class="comment-time">' + esc(c.time) + '</span></div><div class="comment-body">' + esc(c.text) + '</div></div>';
+            }).join('')) +
+        '</div>' +
+        '<div class="gh-discuss"><a href="' + s.url + '/issues" target="_blank" rel="noopener">在 GitHub Issues 上参与讨论 →</a></div>' +
+      '</div>';
+
+    document.getElementById('skillModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeSkillModal = function() {
+    document.getElementById('skillModal').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  // 点击遮罩关闭
+  document.getElementById('skillModal').addEventListener('click', function(e) {
+    if (e.target === this) closeSkillModal();
+  });
+
+  // ESC 关闭
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSkillModal();
+  });
+
+  window.submitComment = function(fn) {
+    var name = document.getElementById('commentName').value.trim() || '匿名用户';
+    var text = document.getElementById('commentText').value.trim();
+    if (!text) { showToast('请输入评论内容'); return; }
+
+    var comments = getComments(fn);
+    comments.push({
+      name: name,
+      text: text,
+      time: new Date().toLocaleString('zh-CN')
+    });
+    saveComments(fn, comments);
+    showToast('评论发表成功');
+
+    // 重新打开弹窗刷新评论
+    var skill = allSkills.find(function(s) { return s.fullName === fn; });
+    if (skill) openSkillModal(skill);
+  };
+
+  window.copyModalCmd = function(cmd, btn) {
+    navigator.clipboard.writeText(cmd).then(function() {
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7"/></svg> 已复制';
+      showToast('安装命令已复制到剪贴板');
+      setTimeout(function() {
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 012-2h8"/></svg> 复制安装命令';
+      }, 2000);
+    });
+  };
+
+  // 暴露 allSkills 给 inline onclick
+  window.allSkills = allSkills;
 
   // ================================================================
   // 淡入动画
