@@ -1949,15 +1949,22 @@ body::after {
   var GH_REPO = 'qq845200/qq845200.github.io';
 
   function loadIssueMap() {
-    fetch('https://api.github.com/search/issues?q=' + encodeURIComponent('repo:' + GH_REPO + ' "skill:" in:title') + '&per_page=100')
-      .then(function(r) { return r.json(); })
+    fetch('https://api.github.com/search/issues?q=' + encodeURIComponent('repo:' + GH_REPO + ' "skill:" in:title is:issue is:open') + '&per_page=100&sort=created&direction=desc')
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function(data) {
         if (!data.items) return;
         data.items.forEach(function(issue) {
-          // 从 title 提取 fullName: "skill: owner/repo" → "owner/repo"
           var m = issue.title.match(/^skill:\s*(.+)$/);
           if (m) {
-            issueMap[m[1].trim()] = { number: issue.number, comments: issue.comments, html_url: issue.html_url };
+            var fn = m[1].trim();
+            // 保留评论数最多的那个 Issue（避免重复）
+            var existing = issueMap[fn];
+            if (!existing || issue.comments > existing.comments) {
+              issueMap[fn] = { number: issue.number, comments: issue.comments, html_url: issue.html_url };
+            }
           }
         });
         // 更新所有卡片上的评论数
@@ -1992,7 +1999,10 @@ body::after {
     listEl.innerHTML = '<div class="cc-empty"><div class="spinner" style="display:inline-block;width:14px;height:14px;border-width:1.5px;vertical-align:middle;margin-right:6px"></div>加载中...</div>';
 
     fetch('https://api.github.com/repos/' + GH_REPO + '/issues/' + info.number + '/comments')
-      .then(function(r) { return r.json(); })
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function(comments) {
         if (!comments || comments.length === 0) {
           listEl.innerHTML = '<div class="cc-empty">暂无评论，来发表第一条吧</div>';
@@ -2006,7 +2016,8 @@ body::after {
         }
         inputWrap.style.display = 'flex';
       }).catch(function() {
-        listEl.innerHTML = '<div class="cc-empty">加载失败</div>';
+        listEl.innerHTML = '<div class="cc-empty">GitHub API 请求受限，请稍后刷新重试</div>';
+        inputWrap.style.display = 'flex';
       });
   };
 
