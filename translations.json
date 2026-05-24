@@ -158,5 +158,89 @@
   "gmickel/flow-next": {
     "cnName": "插件工具",
     "cnDesc": "适用于Claude Code、OpenAI Codex和Factory Droid的规范驱动AI工作流插件。零步骤任务跟踪、工作者子代理、Ralph自主模式、跨模型审核。"
+  },
+  "alirezarezvani/claude-skills": {
+    "cnName": "技能工具",
+    "cnDesc": "329 Claude Code技能和代理技能和插件（ 30多个代理、70多个自定义命令、320多个技能、可定制的参考、脚本） ，适用于Claude Code、Codex、Gemini CLI、Cursor和其他8个编码代理— e"
+  },
+  "VoltAgent/awesome-openclaw-skills": {
+    "cnName": "精选集",
+    "cnDesc": "OpenClaw技能的精彩集合。从官方OpenClaw技能注册表中筛选和分类了5,400多种技能。🦞"
+  },
+  "HKUDS/nanobot": {
+    "cnName": "代理工具",
+    "cnDesc": "适用于工具、聊天和工作流程的轻量级开源AI代理。"
+  },
+  "AstrBotDevs/AstrBot": {
+    "cnName": "插件工具",
+    "cnDesc": "AI Agent Assistant和开发框架集成了许多IM平台、LLM、插件和AI功能，可以作为您的开放式替代方案。 ✨"
+  },
+  "kepano/obsidian-skills": {
+    "cnName": "技能工具",
+    "cnDesc": "黑曜石的特工技能。教您的代理使用Markdown、Bases、JSON Canvas和使用CLI。"
+  },
+  "Alishahryar1/free-claude-code": {
+    "cnName": "代码",
+    "cnDesc": "在终端中免费使用claude-code、VSCode扩展或像OpenClaw这样的不和谐（支持语音）"
+  },
+  "mvanhorn/last30days-skill": {
+    "cnName": "技能",
+    "cnDesc": "人工智能代理技能，研究Reddit、X、YouTube、HN、Polymarket和网络上的任何主题，然后合成基础摘要"
+  },
+  "volcengine/OpenViking": {
+    "cnName": "技能工具",
+    "cnDesc": "OpenViking是一个专门为人工智能代理（如openclaw ）设计的开源上下文数据库。OpenViking统一了Agent所需的上下文管理（内存、资源和技能）"
+  },
+  "OthmanAdi/planning-with-files": {
+    "cnName": "技能工具",
+    "cnDesc": "Claude Code技能实施Manus风格的持久扣分计划— $ 2B收购背后的工作流程模式。"
+  },
+  "mksglu/context-mode": {
+    "cnName": "代理工具",
+    "cnDesc": "人工智能编码代理的上下文窗口优化。沙盒工具输出，减少98%。15个平台"
+  },
+  "Sylinko/Everywhere": {
+    "cnName": "助理工具",
+    "cnDesc": "适用于桌面的情景感知AI助手。随时准备智能响应，无缝集成多个LLM和MCP工具。"
+  },
+  "Gen-Verse/OpenClaw-RL": {
+    "cnName": "代理工具",
+    "cnDesc": "OpenClaw-RL ：只需交谈即可培训任何代理"
+  },
+  "Martian-Engineering/lossless-claw": {
+    "cnName": "插件工具",
+    "cnDesc": "Lossless Claw —适用于OpenClaw的LCM （无损上下文管理）插件"
+  },
+  "CortexReach/memory-lancedb-pro": {
+    "cnName": "插件工具",
+    "cnDesc": "用于OpenClaw的增强型LanceDB内存插件—混合检索（矢量+ BM25 ）、交叉编码器重排、多视野镜隔离、管理CLI"
+  },
+  "junhoyeo/tokscale": {
+    "cnName": "命令行工具工具",
+    "cnDesc": "🛰️ 用于跟踪OpenCode、Claude Code、OpenClaw （ Clawdbot/Moltbot 🦞）、Pi、Codex、Gemini、Cursor、AmpCode、Factory Droid、Kimi等代币使用情况的CLI工具！ •🏅全球排行榜+ 2D/3D Con"
+  },
+  "davepoon/buildwithclaude": {
+    "cnName": "技能工具",
+    "cnDesc": "Claude Skills、Agent、Commands、Hooks、Plugins和Marketplace集合的单一集线器，可扩展Claude Code、Claude Desktop、Agent SDK和OpenClaw"
+  },
+  "moltis-org/moltis": {
+    "cnName": "代理工具",
+    "cnDesc": "Rust中的安全持久性个人代理服务器。一个二进制、沙盒执行、多提供商LLM、语音、内存、Telegram、WhatsApp、Discord、Teams和MCP工具。设计安全，运行在您身上"
+  },
+  "papersgpt/papersgpt-for-zotero": {
+    "cnName": "插件工具",
+    "cnDesc": "强大的Zotero AI和MCP插件，具有ChatGPT、Gemini 3.5、Claude、DeepSeek V4、Grok、OpenRouter、Kimi 2.6、GLM 5、SiliconFlow、GPT-oss、Gemma 4、Qwen 3.7"
+  },
+  "DingTalk-Real-AI/dingtalk-openclaw-connector": {
+    "cnName": "插件工具",
+    "cnDesc": "官方OpenClaw DingTalk频道插件| 钉钉官方 OpenClaw 插件"
+  },
+  "xmanrui/OpenClaw-bot-review": {
+    "cnName": "审查",
+    "cnDesc": "轻量级Web仪表板，用于一目了然地查看所有OpenClaw机器人/代理/模型/会话状态。"
+  },
+  "runkids/skillshare": {
+    "cnName": "技能工具",
+    "cnDesc": "只需一个命令，即可跨所有AI CLI工具同📚步技能，并简化团队共享。支持Codex、Claude Code、OpenClaw等"
   }
 }
