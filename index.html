@@ -559,7 +559,7 @@ body::after {
   border-radius: var(--radius);
   padding: 24px;
   transition: background 0.4s, border-color 0.4s, box-shadow 0.5s var(--ease-out);
-  overflow: hidden;
+  overflow: visible;
   cursor: none;
   display: flex;
   flex-direction: column;
@@ -1178,6 +1178,63 @@ body::after {
   .footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
 }
 
+/* 卡片内评论 */
+.comment-toggle {
+  display: inline-flex; align-items: center; gap: 3px; cursor: none;
+  transition: color 0.2s; color: var(--text-3); font-size: 0.76em;
+}
+.comment-toggle:hover { color: var(--cyan); }
+.comment-toggle svg { width: 14px; height: 14px; }
+
+.card-comments {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height 0.4s var(--ease-out), opacity 0.3s, margin-top 0.3s, padding-top 0.3s;
+}
+.card-comments.open { max-height: 600px; opacity: 1; }
+
+.cc-item {
+  display: flex; gap: 10px; padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.cc-item:last-of-type { border-bottom: none; }
+.cc-avatar { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; }
+.cc-body { flex: 1; min-width: 0; }
+.cc-user { font-size: 0.76em; font-weight: 600; color: var(--text); }
+.cc-user a { color: var(--cyan); text-decoration: none; }
+.cc-text { font-size: 0.78em; color: var(--text-2); line-height: 1.5; margin-top: 2px; }
+.cc-time { font-size: 0.66em; color: var(--text-3); margin-top: 2px; }
+.cc-empty { font-size: 0.78em; color: var(--text-3); text-align: center; padding: 8px 0; }
+
+.cc-input-row {
+  display: flex; gap: 6px; margin-top: 10px; padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.cc-input {
+  flex: 1; padding: 8px 12px; background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06); border-radius: 10px;
+  color: var(--text); font-size: 0.78em; font-family: inherit; outline: none;
+  transition: border-color 0.3s;
+}
+.cc-input:focus { border-color: rgba(90,200,250,0.25); }
+.cc-send {
+  padding: 8px 14px; border-radius: 10px; font-size: 0.76em; font-weight: 500;
+  background: rgba(90,200,250,0.08); border: 1px solid rgba(90,200,250,0.18);
+  color: var(--cyan); cursor: none; font-family: inherit;
+  transition: all 0.3s var(--ease-out); white-space: nowrap;
+}
+.cc-send:hover { background: rgba(90,200,250,0.14); transform: translateY(-1px); }
+
+/* 评论移动端 */
+@media (pointer: coarse) {
+  .cc-input { min-height: 40px; }
+  .cc-send { min-height: 40px; padding: 8px 16px; }
+}
+@media (max-width: 540px) {
+  .cc-input-row { flex-direction: column; }
+}
+
 /* 收藏按钮 */
 .btn-bookmark {
   padding: 6px 14px; border-radius: 9px; font-size: 0.74em; font-weight: 500;
@@ -1445,6 +1502,7 @@ body::after {
   // ================================================================
 
   var BK_KEY = 'ai-skills-bookmarks';
+  var issueMap = {}; // { fullName: { number, comments, html_url } }
 
   function getBookmarks() { try { return JSON.parse(localStorage.getItem(BK_KEY) || '[]'); } catch(e) { return []; } }
   function saveBookmarks(arr) { localStorage.setItem(BK_KEY, JSON.stringify(arr)); }
@@ -1645,6 +1703,7 @@ body::after {
       renderSkills();
       renderTrends();
       updateBookmarkCount();
+      loadIssueMap();
 
       // 统计条动画
       setTimeout(function() {
@@ -1731,6 +1790,7 @@ body::after {
           '<div class="skill-meta">' +
             '<span class="skill-stars"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>' + formatNum(s.stars) + '</span>' +
             '<span class="lang-badge"><span class="lang-dot ' + langClass + '"></span>' + esc(s.language || '—') + '</span>' +
+            '<span class="comment-toggle" data-fn="' + escAttr(s.fullName) + '" onclick="toggleCardComments(event, \'' + escAttr(s.fullName) + '\')"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 3.5C2 2.67 2.67 2 3.5 2h9c.83 0 1.5.67 1.5 1.5v6c0 .83-.67 1.5-1.5 1.5H6l-2.5 2v-2h0C2.67 11 2 10.33 2 9.5z"/></svg> <span class="cc-count">0</span></span>' +
           '</div>' +
           '<div style="display:flex;gap:6px;">' +
             '<button class="btn-bookmark' + (isBk ? ' bookmarked' : '') + '" onclick="toggleBookmark(event, \'' + escAttr(s.fullName) + '\')">' +
@@ -1742,6 +1802,13 @@ body::after {
           '</div>' +
         '</div>' +
         '<div class="star-bar"><div class="star-bar-fill ' + barClass + '" style="width:' + starPct + '%"></div></div>' +
+        '<div class="card-comments" id="cc-' + s.fullName.replace(/[\/\.]/g, '-') + '">' +
+          '<div class="cc-list"></div>' +
+          '<div class="cc-input-row" style="display:none">' +
+            '<input class="cc-input" placeholder="写评论..." maxlength="300">' +
+            '<button class="cc-send" onclick="sendComment(event, \'' + escAttr(s.fullName) + '\')">发送</button>' +
+          '</div>' +
+        '</div>' +
       '</div>';
     }).join('');
 
@@ -1866,7 +1933,7 @@ body::after {
   function setupCardClick() {
     document.querySelectorAll('.skill-card').forEach(function(card) {
       card.addEventListener('click', function(e) {
-        if (e.target.closest('.btn-copy, .btn-bookmark, a')) return;
+        if (e.target.closest('.btn-copy, .btn-bookmark, a, .comment-toggle, .card-comments, .cc-input, .cc-send')) return;
         var fn = card.getAttribute('data-fn');
         if (!fn) return;
         var skill = allSkills.find(function(s) { return s.fullName === fn; });
@@ -1874,6 +1941,102 @@ body::after {
       });
     });
   }
+
+  // ================================================================
+  // GitHub Issues 评论 — 批量加载 + 卡片内展示
+  // ================================================================
+
+  var GH_REPO = 'qq845200/qq845200.github.io';
+
+  function loadIssueMap() {
+    fetch('https://api.github.com/search/issues?q=' + encodeURIComponent('repo:' + GH_REPO + ' "skill:" in:title') + '&per_page=100')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data.items) return;
+        data.items.forEach(function(issue) {
+          // 从 title 提取 fullName: "skill: owner/repo" → "owner/repo"
+          var m = issue.title.match(/^skill:\s*(.+)$/);
+          if (m) {
+            issueMap[m[1].trim()] = { number: issue.number, comments: issue.comments, html_url: issue.html_url };
+          }
+        });
+        // 更新所有卡片上的评论数
+        document.querySelectorAll('.comment-toggle').forEach(function(el) {
+          var fn = el.getAttribute('data-fn');
+          var info = issueMap[fn];
+          var countEl = el.querySelector('.cc-count');
+          if (info && countEl) countEl.textContent = info.comments;
+        });
+      }).catch(function() {});
+  }
+
+  window.toggleCardComments = function(event, fullName) {
+    event.stopPropagation();
+    var el = document.getElementById('cc-' + fullName.replace(/[\/\.]/g, '-'));
+    if (!el) return;
+    var isOpen = el.classList.contains('open');
+    if (isOpen) { el.classList.remove('open'); return; }
+    el.classList.add('open');
+
+    // 加载评论
+    var info = issueMap[fullName];
+    var listEl = el.querySelector('.cc-list');
+    var inputWrap = el.querySelector('.cc-input-row');
+
+    if (!info) {
+      listEl.innerHTML = '<div class="cc-empty">暂无评论</div>';
+      inputWrap.style.display = 'flex';
+      return;
+    }
+
+    listEl.innerHTML = '<div class="cc-empty"><div class="spinner" style="display:inline-block;width:14px;height:14px;border-width:1.5px;vertical-align:middle;margin-right:6px"></div>加载中...</div>';
+
+    fetch('https://api.github.com/repos/' + GH_REPO + '/issues/' + info.number + '/comments')
+      .then(function(r) { return r.json(); })
+      .then(function(comments) {
+        if (!comments || comments.length === 0) {
+          listEl.innerHTML = '<div class="cc-empty">暂无评论，来发表第一条吧</div>';
+        } else {
+          listEl.innerHTML = comments.map(function(c) {
+            var avatar = c.user && c.user.avatar_url ? '<img class="cc-avatar" src="' + c.user.avatar_url + '" alt="">' : '';
+            var user = c.user ? '<span class="cc-user"><a href="' + c.user.html_url + '" target="_blank" rel="noopener">' + esc(c.user.login) + '</a></span>' : '';
+            var time = c.created_at ? '<div class="cc-time">' + new Date(c.created_at).toLocaleString('zh-CN') + '</div>' : '';
+            return '<div class="cc-item">' + avatar + '<div class="cc-body">' + user + '<div class="cc-text">' + esc(c.body) + '</div>' + time + '</div></div>';
+          }).join('');
+        }
+        inputWrap.style.display = 'flex';
+      }).catch(function() {
+        listEl.innerHTML = '<div class="cc-empty">加载失败</div>';
+      });
+  };
+
+  window.sendComment = function(event, fullName) {
+    event.stopPropagation();
+    var wrapId = 'cc-' + fullName.replace(/[\/\.]/g, '-');
+    var input = document.querySelector('#' + wrapId + ' .cc-input');
+    if (!input) return;
+    var text = input.value.trim();
+    if (!text) { showToast('请输入评论内容'); return; }
+
+    var info = issueMap[fullName];
+    var issueUrl;
+
+    if (info) {
+      issueUrl = info.html_url;
+    } else {
+      issueUrl = 'https://github.com/' + GH_REPO + '/issues/new?title=' + encodeURIComponent('skill: ' + fullName) + '&body=' + encodeURIComponent(text);
+    }
+
+    // 复制评论内容到剪贴板
+    navigator.clipboard.writeText(text).then(function() {
+      showToast('评论已复制，在 GitHub 页面粘贴即可发表');
+      window.open(issueUrl, '_blank');
+      input.value = '';
+    }).catch(function() {
+      window.open(issueUrl, '_blank');
+      input.value = '';
+    });
+  };
 
   // ================================================================
   // 趋势排行
@@ -1957,23 +2120,6 @@ body::after {
 
   var GH_REPO = 'qq845200/qq845200.github.io';
 
-  function fetchIssueComments(fullName, callback) {
-    var issueTitle = 'skill: ' + fullName;
-    // 搜索对应 Issue
-    fetch('https://api.github.com/search/issues?q=' + encodeURIComponent('repo:' + GH_REPO + ' in:title "' + issueTitle + '"'))
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (!data.items || data.items.length === 0) { callback([]); return; }
-        var issue = data.items[0];
-        // 获取 Issue 评论
-        fetch('https://api.github.com/repos/' + GH_REPO + '/issues/' + issue.number + '/comments')
-          .then(function(r) { return r.json(); })
-          .then(function(comments) { callback(comments || [], issue); })
-          .catch(function() { callback([]); });
-      })
-      .catch(function() { callback([]); });
-  }
-
   window.openSkillModal = function(s) {
     if (!s) return;
     var tr = translations[s.fullName] || {};
@@ -2002,45 +2148,10 @@ body::after {
         '<button class="modal-btn modal-btn-primary" onclick="copyModalCmd(\'' + escAttr(installCmd) + '\', this)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 012-2h8"/></svg> 复制安装命令</button>' +
         '<button class="modal-btn modal-btn-amber' + (isBk ? ' bookmarked' : '') + '" onclick="toggleBookmark(event, \'' + escAttr(s.fullName) + '\')"><svg width="14" height="14" viewBox="0 0 16 16" fill="' + (isBk ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5l1.85 3.75L14 5.9l-3 2.92.71 4.13L8 10.88l-3.71 1.95L5 8.82 2 5.9l4.15-.65z"/></svg> ' + (isBk ? '已收藏' : '收藏') + '</button>' +
         '<a class="modal-btn modal-btn-secondary" href="' + s.url + '" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3"/><path d="M10 2h4v4"/><path d="M7 9L14 2"/></svg> GitHub</a>' +
-      '</div>' +
-      '<div class="comments-area">' +
-        '<div class="comments-title">评论与讨论 <span id="comment-count" style="font-weight:400;color:var(--text-3)"></span></div>' +
-        '<div id="comment-list" class="comment-list"><div class="comment-empty"><div class="spinner" style="display:inline-block;width:16px;height:16px;border-width:1.5px;vertical-align:middle;margin-right:8px"></div>加载评论中...</div></div>' +
-        '<a class="modal-btn modal-btn-primary" id="comment-github-link" href="#" target="_blank" rel="noopener" style="margin-top:16px;text-decoration:none"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3"/><path d="M10 2h4v4"/><path d="M7 9L14 2"/></svg> 在 GitHub 上发表评论</a>' +
       '</div>';
 
     document.getElementById('skillModal').classList.add('open');
     document.body.style.overflow = 'hidden';
-
-    // 从 GitHub API 加载评论
-    fetchIssueComments(s.fullName, function(comments, issue) {
-      var listEl = document.getElementById('comment-list');
-      var countEl = document.getElementById('comment-count');
-      var linkEl = document.getElementById('comment-github-link');
-      if (!listEl) return;
-
-      if (comments.length === 0) {
-        listEl.innerHTML = '<div class="comment-empty">暂无评论，点击下方按钮在 GitHub 上发表第一条</div>';
-      } else {
-        if (countEl) countEl.textContent = '(' + comments.length + ')';
-        listEl.innerHTML = comments.map(function(c) {
-          var avatar = c.user && c.user.avatar_url ? '<img src="' + c.user.avatar_url + '" style="width:24px;height:24px;border-radius:50%;flex-shrink:0" alt="">' : '';
-          var user = c.user ? '<a href="' + c.user.html_url + '" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">' + esc(c.user.login) + '</a>' : '匿名';
-          var time = c.created_at ? new Date(c.created_at).toLocaleString('zh-CN') : '';
-          return '<div class="comment-item">' +
-            '<div class="comment-header" style="gap:8px">' + avatar + '<span class="comment-author">' + user + '</span><span class="comment-time">' + time + '</span></div>' +
-            '<div class="comment-body">' + esc(c.body) + '</div></div>';
-        }).join('');
-      }
-
-      // 更新 GitHub 评论链接
-      if (issue) {
-        linkEl.href = issue.html_url;
-      } else {
-        // 没有 Issue 则链接到创建新 Issue
-        linkEl.href = 'https://github.com/' + GH_REPO + '/issues/new?title=' + encodeURIComponent('skill: ' + s.fullName) + '&body=' + encodeURIComponent('评论关于 ' + s.fullName + ' 技能\n\n');
-      }
-    });
   };
 
   window.closeSkillModal = function() {
