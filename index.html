@@ -1952,13 +1952,8 @@ body::after {
   }
 
   // ================================================================
-  // 详情弹窗 + 评论
+  // 详情弹窗 + GitHub Issues 评论 (Utterances)
   // ================================================================
-
-  var CM_KEY = 'ai-skills-comments';
-
-  function getComments(fn) { try { var all = JSON.parse(localStorage.getItem(CM_KEY) || '{}'); return all[fn] || []; } catch(e) { return []; } }
-  function saveComments(fn, arr) { try { var all = JSON.parse(localStorage.getItem(CM_KEY) || '{}'); all[fn] = arr; localStorage.setItem(CM_KEY, JSON.stringify(all)); } catch(e) {} }
 
   window.openSkillModal = function(s) {
     if (!s) return;
@@ -1968,7 +1963,6 @@ body::after {
     var installCmd = getInstallCmd(s);
     var isBk = isBookmarked(s.fullName);
     var langClass = 'lang-' + (s.language || 'default');
-    var comments = getComments(s.fullName);
 
     var body = document.getElementById('modalBody');
     body.innerHTML =
@@ -1991,30 +1985,35 @@ body::after {
         '<a class="modal-btn modal-btn-secondary" href="' + s.url + '" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3"/><path d="M10 2h4v4"/><path d="M7 9L14 2"/></svg> GitHub</a>' +
       '</div>' +
       '<div class="comments-area">' +
-        '<div class="comments-title">评论 (' + comments.length + ')</div>' +
-        '<div class="comment-form">' +
-          '<div class="comment-input-row">' +
-            '<input class="comment-input" id="commentName" placeholder="你的昵称" maxlength="30">' +
-          '</div>' +
-          '<textarea class="comment-textarea" id="commentText" placeholder="分享你的使用体验..." maxlength="500"></textarea>' +
-          '<button class="comment-submit" onclick="submitComment(\'' + escAttr(s.fullName) + '\')">发表评论</button>' +
-        '</div>' +
-        '<div class="comment-list" id="commentList">' +
-          (comments.length === 0 ? '<div class="comment-empty">暂无评论，来发表第一条吧</div>' :
-            comments.slice().reverse().map(function(c) {
-              return '<div class="comment-item"><div class="comment-header"><span class="comment-author">' + esc(c.name) + '</span><span class="comment-time">' + esc(c.time) + '</span></div><div class="comment-body">' + esc(c.text) + '</div></div>';
-            }).join('')) +
-        '</div>' +
-        '<div class="gh-discuss"><a href="' + s.url + '/issues" target="_blank" rel="noopener">在 GitHub Issues 上参与讨论 →</a></div>' +
+        '<div class="comments-title">评论与讨论</div>' +
+        '<div id="utterances-container"></div>' +
       '</div>';
 
     document.getElementById('skillModal').classList.add('open');
     document.body.style.overflow = 'hidden';
+
+    // 动态加载 Utterances 评论组件（每个技能对应一个 GitHub Issue）
+    setTimeout(function() {
+      var container = document.getElementById('utterances-container');
+      if (!container) return;
+      container.innerHTML = '';
+      var script = document.createElement('script');
+      script.src = 'https://utteranc.es/client.js';
+      script.setAttribute('repo', 'qq845200/qq845200.github.io');
+      script.setAttribute('issue-term', 'skill: ' + s.fullName);
+      script.setAttribute('theme', 'github-dark');
+      script.setAttribute('crossorigin', 'anonymous');
+      script.async = true;
+      container.appendChild(script);
+    }, 150);
   };
 
   window.closeSkillModal = function() {
     document.getElementById('skillModal').classList.remove('open');
     document.body.style.overflow = '';
+    // 清理 Utterances
+    var container = document.getElementById('utterances-container');
+    if (container) container.innerHTML = '';
   };
 
   // 点击遮罩关闭
@@ -2026,25 +2025,6 @@ body::after {
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeSkillModal();
   });
-
-  window.submitComment = function(fn) {
-    var name = document.getElementById('commentName').value.trim() || '匿名用户';
-    var text = document.getElementById('commentText').value.trim();
-    if (!text) { showToast('请输入评论内容'); return; }
-
-    var comments = getComments(fn);
-    comments.push({
-      name: name,
-      text: text,
-      time: new Date().toLocaleString('zh-CN')
-    });
-    saveComments(fn, comments);
-    showToast('评论发表成功');
-
-    // 重新打开弹窗刷新评论
-    var skill = allSkills.find(function(s) { return s.fullName === fn; });
-    if (skill) openSkillModal(skill);
-  };
 
   window.copyModalCmd = function(cmd, btn) {
     navigator.clipboard.writeText(cmd).then(function() {
