@@ -1952,8 +1952,27 @@ body::after {
   }
 
   // ================================================================
-  // 详情弹窗 + GitHub Issues 评论 (Utterances)
+  // 详情弹窗 + GitHub Issues 评论（直接 API 读取）
   // ================================================================
+
+  var GH_REPO = 'qq845200/qq845200.github.io';
+
+  function fetchIssueComments(fullName, callback) {
+    var issueTitle = 'skill: ' + fullName;
+    // 搜索对应 Issue
+    fetch('https://api.github.com/search/issues?q=' + encodeURIComponent('repo:' + GH_REPO + ' in:title "' + issueTitle + '"'))
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data.items || data.items.length === 0) { callback([]); return; }
+        var issue = data.items[0];
+        // 获取 Issue 评论
+        fetch('https://api.github.com/repos/' + GH_REPO + '/issues/' + issue.number + '/comments')
+          .then(function(r) { return r.json(); })
+          .then(function(comments) { callback(comments || [], issue); })
+          .catch(function() { callback([]); });
+      })
+      .catch(function() { callback([]); });
+  }
 
   window.openSkillModal = function(s) {
     if (!s) return;
@@ -1985,34 +2004,48 @@ body::after {
         '<a class="modal-btn modal-btn-secondary" href="' + s.url + '" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3"/><path d="M10 2h4v4"/><path d="M7 9L14 2"/></svg> GitHub</a>' +
       '</div>' +
       '<div class="comments-area">' +
-        '<div class="comments-title">评论与讨论</div>' +
-        '<div id="utterances-container"></div>' +
+        '<div class="comments-title">评论与讨论 <span id="comment-count" style="font-weight:400;color:var(--text-3)"></span></div>' +
+        '<div id="comment-list" class="comment-list"><div class="comment-empty"><div class="spinner" style="display:inline-block;width:16px;height:16px;border-width:1.5px;vertical-align:middle;margin-right:8px"></div>加载评论中...</div></div>' +
+        '<a class="modal-btn modal-btn-primary" id="comment-github-link" href="#" target="_blank" rel="noopener" style="margin-top:16px;text-decoration:none"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3H3a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3"/><path d="M10 2h4v4"/><path d="M7 9L14 2"/></svg> 在 GitHub 上发表评论</a>' +
       '</div>';
 
     document.getElementById('skillModal').classList.add('open');
     document.body.style.overflow = 'hidden';
 
-    // 动态加载 Utterances 评论组件（iframe 方式，确保在弹窗内可靠加载）
-    setTimeout(function() {
-      var container = document.getElementById('utterances-container');
-      if (!container) return;
-      container.innerHTML = '';
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://utteranc.es/utterances.html?repo=qq845200%2Fqq845200.github.io&issue-term=skill%3A%20' + encodeURIComponent(s.fullName) + '&theme=github-dark&crossorigin=anonymous';
-      iframe.style.width = '100%';
-      iframe.style.border = 'none';
-      iframe.style.minHeight = '260px';
-      iframe.setAttribute('scrolling', 'no');
-      container.appendChild(iframe);
-    }, 200);
+    // 从 GitHub API 加载评论
+    fetchIssueComments(s.fullName, function(comments, issue) {
+      var listEl = document.getElementById('comment-list');
+      var countEl = document.getElementById('comment-count');
+      var linkEl = document.getElementById('comment-github-link');
+      if (!listEl) return;
+
+      if (comments.length === 0) {
+        listEl.innerHTML = '<div class="comment-empty">暂无评论，点击下方按钮在 GitHub 上发表第一条</div>';
+      } else {
+        if (countEl) countEl.textContent = '(' + comments.length + ')';
+        listEl.innerHTML = comments.map(function(c) {
+          var avatar = c.user && c.user.avatar_url ? '<img src="' + c.user.avatar_url + '" style="width:24px;height:24px;border-radius:50%;flex-shrink:0" alt="">' : '';
+          var user = c.user ? '<a href="' + c.user.html_url + '" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">' + esc(c.user.login) + '</a>' : '匿名';
+          var time = c.created_at ? new Date(c.created_at).toLocaleString('zh-CN') : '';
+          return '<div class="comment-item">' +
+            '<div class="comment-header" style="gap:8px">' + avatar + '<span class="comment-author">' + user + '</span><span class="comment-time">' + time + '</span></div>' +
+            '<div class="comment-body">' + esc(c.body) + '</div></div>';
+        }).join('');
+      }
+
+      // 更新 GitHub 评论链接
+      if (issue) {
+        linkEl.href = issue.html_url;
+      } else {
+        // 没有 Issue 则链接到创建新 Issue
+        linkEl.href = 'https://github.com/' + GH_REPO + '/issues/new?title=' + encodeURIComponent('skill: ' + s.fullName) + '&body=' + encodeURIComponent('评论关于 ' + s.fullName + ' 技能\n\n');
+      }
+    });
   };
 
   window.closeSkillModal = function() {
     document.getElementById('skillModal').classList.remove('open');
     document.body.style.overflow = '';
-    // 清理 Utterances
-    var container = document.getElementById('utterances-container');
-    if (container) container.innerHTML = '';
   };
 
   // 点击遮罩关闭
