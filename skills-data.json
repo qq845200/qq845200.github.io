@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-28",
+  "updatedAt": "2026-05-29",
   "stats": {
     "claude": 20,
     "codex": 20,
@@ -7,17 +7,17 @@
     "total": 60
   },
   "tagStats": {
-    "代码审查": 9,
-    "AI 代理": 51,
+    "代码审查": 8,
+    "AI 代理": 50,
     "开发工具": 33,
     "API 集成": 23,
-    "插件市场": 13,
+    "插件市场": 14,
     "UI/UX 设计": 17,
-    "自动化": 22,
-    "数据分析": 5,
+    "自动化": 21,
+    "数据分析": 4,
     "文档": 5,
-    "代码生成": 5,
     "低代码": 2,
+    "代码生成": 4,
     "部署": 3,
     "项目管理": 15,
     "其他": 2,
@@ -32,8 +32,8 @@
         "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
         "url": "https://github.com/affaan-m/ECC",
         "homepage": "https://ecc.tools",
-        "stars": 196342,
-        "forks": 30207,
+        "stars": 197457,
+        "forks": 30365,
         "language": "JavaScript",
         "topics": [
           "ai-agents",
@@ -45,8 +45,8 @@
           "mcp",
           "productivity"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 31,
+        "updatedAt": "2026-05-29",
+        "openIssues": 32,
         "tags": [
           "代码审查",
           "AI 代理",
@@ -61,12 +61,12 @@
         "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
         "url": "https://github.com/multica-ai/andrej-karpathy-skills",
         "homepage": "",
-        "stars": 159443,
-        "forks": 16339,
+        "stars": 160682,
+        "forks": 16462,
         "language": "",
         "topics": [],
-        "updatedAt": "2026-05-28",
-        "openIssues": 111,
+        "updatedAt": "2026-05-29",
+        "openIssues": 113,
         "tags": [
           "AI 代理"
         ]
@@ -78,12 +78,12 @@
         "description": "Skills for Real Engineers. Straight from my .claude directory.",
         "url": "https://github.com/mattpocock/skills",
         "homepage": "",
-        "stars": 109005,
-        "forks": 9584,
+        "stars": 110367,
+        "forks": 9683,
         "language": "Shell",
         "topics": [],
-        "updatedAt": "2026-05-28",
-        "openIssues": 41,
+        "updatedAt": "2026-05-29",
+        "openIssues": 44,
         "tags": [
           "插件市场"
         ]
@@ -95,8 +95,8 @@
         "description": "An AI SKILL that provide design intelligence for building professional UI/UX multiple platforms",
         "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
         "homepage": "https://www.uupm.cc/",
-        "stars": 83843,
-        "forks": 8648,
+        "stars": 84350,
+        "forks": 8704,
         "language": "Python",
         "topics": [
           "ai-skills",
@@ -119,8 +119,8 @@
           "uikit",
           "windsurf-ai"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 154,
+        "updatedAt": "2026-05-29",
+        "openIssues": 155,
         "tags": [
           "UI/UX 设计",
           "开发工具"
@@ -133,8 +133,8 @@
         "description": "🪨 why use many token when few token do trick — Claude Code skill that cuts 65% of tokens by talking like caveman",
         "url": "https://github.com/JuliusBrussee/caveman",
         "homepage": "https://getcaveman.dev/",
-        "stars": 65688,
-        "forks": 3708,
+        "stars": 66077,
+        "forks": 3725,
         "language": "JavaScript",
         "topics": [
           "ai",
@@ -148,8 +148,8 @@
           "skill",
           "tokens"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 241,
+        "updatedAt": "2026-05-29",
+        "openIssues": 245,
         "tags": [
           "AI 代理"
         ]
@@ -161,8 +161,8 @@
         "description": "A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows",
         "url": "https://github.com/ComposioHQ/awesome-claude-skills",
         "homepage": "",
-        "stars": 62184,
-        "forks": 6815,
+        "stars": 62322,
+        "forks": 6825,
         "language": "Python",
         "topics": [
           "agent-skills",
@@ -183,8 +183,8 @@
           "skill",
           "workflow-automation"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 697,
+        "updatedAt": "2026-05-29",
+        "openIssues": 702,
         "tags": [
           "自动化",
           "AI 代理",
@@ -200,8 +200,8 @@
         "description": "AI coding assistant skill (Claude Code, Codex, OpenCode, Cursor, Gemini CLI, and more). Turn any folder of code, SQL schemas, R scripts, shell scripts, docs, papers, images, or videos into a queryable",
         "url": "https://github.com/safishamsi/graphify",
         "homepage": "https://graphifylabs.ai/",
-        "stars": 55136,
-        "forks": 5810,
+        "stars": 55701,
+        "forks": 5853,
         "language": "Python",
         "topics": [
           "antigravity",
@@ -216,8 +216,8 @@
           "skills",
           "tree-sitter"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 263,
+        "updatedAt": "2026-05-29",
+        "openIssues": 276,
         "tags": [
           "数据分析",
           "文档",
@@ -228,21 +228,22 @@
         "id": 1223170290,
         "name": "open-design",
         "fullName": "nexu-io/open-design",
-        "description": "🎨 Local-first, open-source  Claude Design alternative. ⚡ 19 Skills · ✨ 71 brand-grade Design Systems 🖼 Generate web · desktop · mobile prototypes · slides · images · videos · HyperFrames 📦 Sandboxe",
+        "description": "🎨 Local-first, open-source Claude Design alternative. 🖥️ Native desktop app. ⚡ 259+ Skills · ✨ 142+ Design Systems 🖼️ Web · desktop · mobile prototypes · slides · images · videos · HyperFrames 📦 S",
         "url": "https://github.com/nexu-io/open-design",
         "homepage": "https://open-design.ai",
-        "stars": 54193,
-        "forks": 6143,
+        "stars": 54930,
+        "forks": 6218,
         "language": "TypeScript",
         "topics": [
           "agent-skills",
           "ai-agents",
           "ai-design",
           "byok",
-          "claude",
           "claude-code-for-design",
           "claude-design",
+          "codex-design",
           "coding-agents",
+          "cursor-design",
           "design-systems",
           "design-tools",
           "desktop-app",
@@ -250,16 +251,14 @@
           "generative-ai",
           "hermes-agent",
           "local-first",
-          "nextjs",
           "no-code",
           "prototyping",
           "ui-generator",
           "vibe-coding"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 340,
+        "updatedAt": "2026-05-29",
+        "openIssues": 367,
         "tags": [
-          "代码生成",
           "UI/UX 设计",
           "AI 代理",
           "开发工具",
@@ -273,8 +272,8 @@
         "description": "AI-powered job search system built on Claude Code. 14 skill modes, Go dashboard, PDF generation, batch processing.",
         "url": "https://github.com/santifer/career-ops",
         "homepage": "https://career-ops.org",
-        "stars": 47526,
-        "forks": 9892,
+        "stars": 47702,
+        "forks": 9927,
         "language": "JavaScript",
         "topics": [
           "ai-agent",
@@ -291,8 +290,8 @@
           "open-source",
           "resume"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 120,
+        "updatedAt": "2026-05-29",
+        "openIssues": 121,
         "tags": [
           "代码生成",
           "UI/UX 设计",
@@ -308,8 +307,8 @@
         "description": "Production-grade engineering skills for AI coding agents.",
         "url": "https://github.com/addyosmani/agent-skills",
         "homepage": "",
-        "stars": 46541,
-        "forks": 5163,
+        "stars": 46732,
+        "forks": 5181,
         "language": "Shell",
         "topics": [
           "agent-skills",
@@ -319,7 +318,7 @@
           "cursor",
           "skills"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 92,
         "tags": [
           "AI 代理",
@@ -330,11 +329,11 @@
         "id": 159152904,
         "name": "JeecgBoot",
         "fullName": "jeecgboot/JeecgBoot",
-        "description": "AI 低代码平台，「低代码 + 零代码」双模式驱动：低代码一键生成前后端代码，零代码 5 分钟搭建系统，AI Skills 一句话画流程、设计表单、生成整套系统。内置 AI聊天、知识库、流程编排、MCP插件等，兼容主流大模型。引领「AI 生成 → 在线配置 �� 代码生成 → 手工合并->AI修改」开发模式，消除 Java 项目 80% 的重复工作，提效而不失灵活。",
+        "description": "AI 低代码平台，「低代码 + 零代码」双模式驱动：低代码一键生成前后端代码，零代码 5 分钟搭建系统，AI Skills 一句话画流程、设计表单、生成整套系统。内置 AI聊天、知识库、流程编排、MCP插件等，兼容主流大模型。引领「AI 生成 → 在线配置 → 代码生成 → 手工合并->AI修改」开发模式，消除 Java 项目 80% 的重复工作，提效而不失灵活。",
         "url": "https://github.com/jeecgboot/JeecgBoot",
         "homepage": "https://jeecg.com",
-        "stars": 46482,
-        "forks": 16008,
+        "stars": 46498,
+        "forks": 16013,
         "language": "Java",
         "topics": [
           "activiti",
@@ -358,7 +357,7 @@
           "springcloud",
           "vue3"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 20,
         "tags": [
           "代码生成",
@@ -375,8 +374,8 @@
         "description": "A curated list of awesome skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude Code by Anthropic",
         "url": "https://github.com/hesreallyhim/awesome-claude-code",
         "homepage": "",
-        "stars": 45005,
-        "forks": 3884,
+        "stars": 45095,
+        "forks": 3903,
         "language": "Python",
         "topics": [
           "agent-skills",
@@ -399,8 +398,8 @@
           "coding-assistants",
           "llm"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 353,
+        "updatedAt": "2026-05-29",
+        "openIssues": 358,
         "tags": [
           "自动化",
           "AI 代理",
@@ -414,8 +413,8 @@
         "description": "Installable GitHub library of 1,400+ agentic skills for Claude Code, Cursor, Codex CLI, Gemini CLI, Antigravity, and more. Includes installer CLI, bundles, workflows, and official/community skill coll",
         "url": "https://github.com/sickn33/antigravity-awesome-skills",
         "homepage": "https://sickn33.github.io/antigravity-awesome-skills/",
-        "stars": 38952,
-        "forks": 6332,
+        "stars": 39047,
+        "forks": 6348,
         "language": "Python",
         "topics": [
           "agent-skills",
@@ -439,7 +438,7 @@
           "mcp",
           "skill-library"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 3,
         "tags": [
           "自动化",
@@ -456,8 +455,8 @@
         "description": "Multi-harness agentic plugin marketplace for Claude Code, Codex CLI, Cursor, OpenCode, and Gemini CLI",
         "url": "https://github.com/wshobson/agents",
         "homepage": "https://sethhobson.com",
-        "stars": 36048,
-        "forks": 3912,
+        "stars": 36093,
+        "forks": 3916,
         "language": "Python",
         "topics": [
           "agent-skills",
@@ -481,7 +480,7 @@
           "prompt-engineering",
           "workflows"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 3,
         "tags": [
           "自动化",
@@ -498,16 +497,16 @@
         "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
         "url": "https://github.com/anthropics/claude-plugins-official",
         "homepage": "https://code.claude.com/docs/en/plugins",
-        "stars": 28283,
-        "forks": 3014,
+        "stars": 28460,
+        "forks": 3030,
         "language": "Python",
         "topics": [
           "claude-code",
           "mcp",
           "skills"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 715,
+        "updatedAt": "2026-05-29",
+        "openIssues": 716,
         "tags": [
           "代码审查",
           "插件市场",
@@ -522,8 +521,8 @@
         "description": "A Claude Code plugin that shows what's happening - context usage, active tools, running agents, and todo progress",
         "url": "https://github.com/jarrodwatts/claude-hud",
         "homepage": "",
-        "stars": 23888,
-        "forks": 1076,
+        "stars": 23981,
+        "forks": 1079,
         "language": "JavaScript",
         "topics": [
           "anthropic",
@@ -534,8 +533,8 @@
           "statusline",
           "typescript"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 12,
+        "updatedAt": "2026-05-29",
+        "openIssues": 17,
         "tags": [
           "AI 代理",
           "开发工具",
@@ -549,8 +548,8 @@
         "description": "A curated collection of 1000+ agent skills from official dev teams and the community, compatible with Claude Code, Codex, Gemini CLI, Cursor, and more.",
         "url": "https://github.com/VoltAgent/awesome-agent-skills",
         "homepage": "https://officialskills.sh/",
-        "stars": 23366,
-        "forks": 2504,
+        "stars": 23466,
+        "forks": 2512,
         "language": "",
         "topics": [
           "agent-skills",
@@ -568,8 +567,8 @@
           "opencode-skills",
           "skills"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 12,
+        "updatedAt": "2026-05-29",
+        "openIssues": 16,
         "tags": [
           "AI 代理",
           "插件市场"
@@ -582,12 +581,12 @@
         "description": "Use Codex from Claude Code to review code or delegate tasks.",
         "url": "https://github.com/openai/codex-plugin-cc",
         "homepage": "",
-        "stars": 19812,
-        "forks": 1197,
+        "stars": 19871,
+        "forks": 1201,
         "language": "JavaScript",
         "topics": [],
-        "updatedAt": "2026-05-28",
-        "openIssues": 216,
+        "updatedAt": "2026-05-29",
+        "openIssues": 218,
         "tags": [
           "代码审查",
           "项目管理"
@@ -600,15 +599,15 @@
         "description": "Official Compound Engineering plugin for Claude Code, Codex, Cursor, and more",
         "url": "https://github.com/EveryInc/compound-engineering-plugin",
         "homepage": "https://every.to/guides/compound-engineering",
-        "stars": 17559,
-        "forks": 1349,
+        "stars": 17822,
+        "forks": 1363,
         "language": "TypeScript",
         "topics": [
           "compound",
           "engineering"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 80,
+        "updatedAt": "2026-05-29",
+        "openIssues": 76,
         "tags": [
           "其他"
         ]
@@ -617,11 +616,11 @@
         "id": 1079084637,
         "name": "claude-skills",
         "fullName": "alirezarezvani/claude-skills",
-        "description": "329 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 320+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — e",
+        "description": "337 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 330+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — e",
         "url": "https://github.com/alirezarezvani/claude-skills",
         "homepage": "https://alirezarezvani.medium.com/",
-        "stars": 16372,
-        "forks": 2258,
+        "stars": 16457,
+        "forks": 2267,
         "language": "Python",
         "topics": [
           "agent-plugins",
@@ -645,8 +644,8 @@
           "openclaw-skills",
           "prompt-engineering"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 10,
+        "updatedAt": "2026-05-29",
+        "openIssues": 8,
         "tags": [
           "AI 代理",
           "开发工具"
@@ -661,8 +660,8 @@
         "description": "Open-source super AI assistant & Agent Harness. Plans tasks, runs tools and skills, autonomously grows with memory and knowledge. Multi-model, multi-channel. Lightweight, extensible, one-line install ",
         "url": "https://github.com/zhayujie/CowAgent",
         "homepage": "https://cowagent.ai",
-        "stars": 44906,
-        "forks": 10147,
+        "stars": 44936,
+        "forks": 10150,
         "language": "Python",
         "topics": [
           "ai",
@@ -682,8 +681,8 @@
           "openclaw",
           "skills"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 322,
+        "updatedAt": "2026-05-29",
+        "openIssues": 323,
         "tags": [
           "AI 代理",
           "开发工具",
@@ -698,8 +697,8 @@
         "description": "程序员鱼皮的 AI 资源大全 + Vibe Coding 零基础教程，分享 OpenClaw 保姆级教程、大模型玩法（DeepSeek / GPT / Gemini / Claude）、最新 AI 资讯、Prompt 提示词大全、AI 知识百科（Agent Skills / RAG / MCP / A2A）、AI 编程教程（Harness Engineering）、AI 工具用法（Cursor /",
         "url": "https://github.com/liyupi/ai-guide",
         "homepage": "https://ai.codefather.cn",
-        "stars": 14696,
-        "forks": 1662,
+        "stars": 14769,
+        "forks": 1668,
         "language": "JavaScript",
         "topics": [
           "ai",
@@ -723,7 +722,7 @@
           "vue",
           "vuepress"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 8,
         "tags": [
           "UI/UX 设计",
@@ -739,8 +738,8 @@
         "description": "ARIS ⚔️ (Auto-Research-In-Sleep) — Lightweight Markdown-only skills for autonomous ML research: cross-model review loops, idea discovery, and experiment automation. No framework, no lock-in — works wi",
         "url": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
         "homepage": "",
-        "stars": 10866,
-        "forks": 1028,
+        "stars": 10936,
+        "forks": 1035,
         "language": "Python",
         "topics": [
           "ai-research",
@@ -764,8 +763,8 @@
           "paper-writing",
           "research-automation"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 59,
+        "updatedAt": "2026-05-29",
+        "openIssues": 61,
         "tags": [
           "代码审查",
           "代码生成",
@@ -783,8 +782,8 @@
         "description": "Tutorials, Guides and Agent Skills Directories",
         "url": "https://github.com/heilcheng/awesome-agent-skills",
         "homepage": "http://agent-skill.co",
-        "stars": 5134,
-        "forks": 461,
+        "stars": 5146,
+        "forks": 463,
         "language": "TypeScript",
         "topics": [
           "agent-skills",
@@ -804,8 +803,8 @@
           "skill-md",
           "vscode"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 134,
+        "updatedAt": "2026-05-29",
+        "openIssues": 135,
         "tags": [
           "UI/UX 设计",
           "自动化",
@@ -822,8 +821,8 @@
         "description": "Multi-agent AI orchestration platform for automation, workflows, and developer tools. Golutra transforms Codex, Claude Code, and OpenClaw into a unified agent system with parallel execution, task orch",
         "url": "https://github.com/golutra/golutra",
         "homepage": "https://www.golutra.com",
-        "stars": 3603,
-        "forks": 412,
+        "stars": 3617,
+        "forks": 417,
         "language": "Rust",
         "topics": [
           "agent",
@@ -847,7 +846,7 @@
           "qwen-coder",
           "workflows"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 51,
         "tags": [
           "自动化",
@@ -863,8 +862,8 @@
         "description": "A curated list of resources dedicated to open source GitHub repositories related to ChatGPT, OpenAI API, and Codex. Searchable via Claude Code skills.",
         "url": "https://github.com/taishi-i/awesome-ChatGPT-repositories",
         "homepage": "https://huggingface.co/spaces/taishi-i/awesome-ChatGPT-repositories-search",
-        "stars": 3045,
-        "forks": 394,
+        "stars": 3047,
+        "forks": 395,
         "language": "Python",
         "topics": [
           "agent",
@@ -879,8 +878,8 @@
           "openai",
           "skills"
         ],
-        "updatedAt": "2026-05-27",
-        "openIssues": 12,
+        "updatedAt": "2026-05-28",
+        "openIssues": 13,
         "tags": [
           "AI 代理",
           "插件市场",
@@ -894,7 +893,7 @@
         "description": "Codex Autoresearch Skill — A self-directed iterative system for Codex that continuously cycles through: modify, verify, retain or discard, and repeat indefinitely. Inspired by Karpathy’s autoresearch ",
         "url": "https://github.com/leo-lilinxiao/codex-autoresearch",
         "homepage": "",
-        "stars": 1793,
+        "stars": 1795,
         "forks": 108,
         "language": "Python",
         "topics": [
@@ -909,7 +908,7 @@
           "openai",
           "skill"
         ],
-        "updatedAt": "2026-05-27",
+        "updatedAt": "2026-05-28",
         "openIssues": 5,
         "tags": [
           "自动化",
@@ -924,7 +923,7 @@
         "description": "Model Context Protocol (MCP) plugin to connect with Unity Editor — designed for Cursor, Claude Code, Codex, Windsurf and other IDEs",
         "url": "https://github.com/CoderGamester/mcp-unity",
         "homepage": "",
-        "stars": 1728,
+        "stars": 1730,
         "forks": 215,
         "language": "C#",
         "topics": [
@@ -942,7 +941,7 @@
           "unity3d"
         ],
         "updatedAt": "2026-05-28",
-        "openIssues": 11,
+        "openIssues": 8,
         "tags": [
           "UI/UX 设计",
           "AI 代理",
@@ -957,8 +956,8 @@
         "description": "Your infinite canvas workspace for agents, tasks, knowledge, and research. An infinite canvas for Claude Code, Codex, terminals, tasks, and notes.",
         "url": "https://github.com/DeadWaveWave/opencove",
         "homepage": "",
-        "stars": 1392,
-        "forks": 110,
+        "stars": 1396,
+        "forks": 112,
         "language": "TypeScript",
         "topics": [
           "agents",
@@ -974,7 +973,7 @@
           "react",
           "typescript"
         ],
-        "updatedAt": "2026-05-27",
+        "updatedAt": "2026-05-29",
         "openIssues": 19,
         "tags": [
           "AI 代理",
@@ -988,8 +987,8 @@
         "description": "A curated list of awesome LLM and AI Agent Skills, resources and tools for customising AI Agent workflows - that works with Claude Code, Codex, Gemini CLI and your custom AI Agents",
         "url": "https://github.com/Prat011/awesome-llm-skills",
         "homepage": "",
-        "stars": 1269,
-        "forks": 187,
+        "stars": 1272,
+        "forks": 188,
         "language": "Python",
         "topics": [
           "anthropic",
@@ -1010,8 +1009,8 @@
           "qwen-coder",
           "skills"
         ],
-        "updatedAt": "2026-05-27",
-        "openIssues": 80,
+        "updatedAt": "2026-05-29",
+        "openIssues": 81,
         "tags": [
           "自动化",
           "AI 代理",
@@ -1026,8 +1025,8 @@
         "description": "WUPHF is a collaborative office of AI employees who build and maintain their own knowledge base to never lose context for the tasks you give them. Supports Claude Code, Codex, OpenClaw and local LLMs ",
         "url": "https://github.com/nex-crm/wuphf",
         "homepage": "https://wuphf.team/",
-        "stars": 1114,
-        "forks": 80,
+        "stars": 1117,
+        "forks": 79,
         "language": "Go",
         "topics": [
           "agents",
@@ -1036,7 +1035,7 @@
           "knowledge-graph"
         ],
         "updatedAt": "2026-05-28",
-        "openIssues": 61,
+        "openIssues": 67,
         "tags": [
           "UI/UX 设计",
           "数据分析",
@@ -1051,7 +1050,7 @@
         "description": "Continuously sync your AI setups with one command. Codebase tailor suited agent skills, MCPs and config files for Claude Code, Cursor, and Codex.",
         "url": "https://github.com/caliber-ai-org/ai-setup",
         "homepage": "https://caliber-ai.dev",
-        "stars": 1094,
+        "stars": 1095,
         "forks": 111,
         "language": "TypeScript",
         "topics": [
@@ -1071,7 +1070,7 @@
           "openai-codex",
           "skills"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 19,
         "tags": [
           "UI/UX 设计",
@@ -1087,7 +1086,7 @@
         "description": "AI coding dream team of agents for VS Code. Claude Code + openai Codex collaborate in brainstorm mode, debate solutions, and synthesize the best approach for your code.",
         "url": "https://github.com/DeepMyst/Mysti",
         "homepage": "https://www.deepmyst.com",
-        "stars": 1057,
+        "stars": 1059,
         "forks": 46,
         "language": "TypeScript",
         "topics": [
@@ -1112,7 +1111,7 @@
           "vscode",
           "vscode-extension"
         ],
-        "updatedAt": "2026-05-27",
+        "updatedAt": "2026-05-28",
         "openIssues": 15,
         "tags": [
           "自动化",
@@ -1127,8 +1126,8 @@
         "description": "You're the boss, agents are your team. They handle tasks on their own, message each other, and review each other's work. You just watch the kanban board and give high-level commands. Codex/Claude/Open",
         "url": "https://github.com/777genius/agent-teams-ai",
         "homepage": "https://777genius.github.io/agent-teams-ai/",
-        "stars": 993,
-        "forks": 216,
+        "stars": 998,
+        "forks": 217,
         "language": "TypeScript",
         "topics": [
           "agent-teams",
@@ -1152,8 +1151,8 @@
           "team-management",
           "typescript"
         ],
-        "updatedAt": "2026-05-27",
-        "openIssues": 14,
+        "updatedAt": "2026-05-29",
+        "openIssues": 10,
         "tags": [
           "代码审查",
           "AI 代理",
@@ -1169,7 +1168,7 @@
         "description": "Delegate tasks to Codex and Gemini directly from within Claude Code.",
         "url": "https://github.com/jarrodwatts/claude-delegator",
         "homepage": "",
-        "stars": 967,
+        "stars": 968,
         "forks": 47,
         "language": "JavaScript",
         "topics": [
@@ -1181,7 +1180,7 @@
           "mcp",
           "plugin"
         ],
-        "updatedAt": "2026-05-27",
+        "updatedAt": "2026-05-28",
         "openIssues": 5,
         "tags": [
           "AI 代理",
@@ -1196,7 +1195,7 @@
         "description": "Multi-agent autonomous SDLC framework. Spec to deployed app. PRD, GitHub issue, OpenAPI/JSON/YAML, or one-line brief. 5 AI providers, 11 quality gates.",
         "url": "https://github.com/asklokesh/loki-mode",
         "homepage": "https://www.autonomi.dev",
-        "stars": 946,
+        "stars": 949,
         "forks": 182,
         "language": "Python",
         "topics": [
@@ -1220,7 +1219,7 @@
           "sdlc",
           "spec-driven-development"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 2,
         "tags": [
           "代码审查",
@@ -1238,8 +1237,8 @@
         "description": "AI writes code. This automates everything else · 26 plugins · 50 agents · 47 skills · for Claude Code, OpenCode, Codex, Cursor, Kiro.",
         "url": "https://github.com/agent-sh/agentsys",
         "homepage": "https://agent-sh.github.io/agentsys/",
-        "stars": 827,
-        "forks": 92,
+        "stars": 829,
+        "forks": 95,
         "language": "JavaScript",
         "topics": [
           "agent",
@@ -1264,7 +1263,7 @@
           "workflow"
         ],
         "updatedAt": "2026-05-28",
-        "openIssues": 0,
+        "openIssues": 1,
         "tags": [
           "代码审查",
           "自动化",
@@ -1320,7 +1319,7 @@
         "description": "Agent Workstation for Codex CLI + Claude Code — with task scheduler, git worktree & remote control, skills management",
         "url": "https://github.com/milisp/codexia",
         "homepage": "https://milisp.dev/codexia",
-        "stars": 694,
+        "stars": 696,
         "forks": 68,
         "language": "TypeScript",
         "topics": [
@@ -1345,7 +1344,7 @@
           "openai-codex",
           "openai-codex-cli"
         ],
-        "updatedAt": "2026-05-27",
+        "updatedAt": "2026-05-28",
         "openIssues": 12,
         "tags": [
           "UI/UX 设计",
@@ -1364,11 +1363,11 @@
         "description": "Generate and evaluate agent skills for code agents like Claude Code, Open Code, OpenAI Codex",
         "url": "https://github.com/huggingface/upskill",
         "homepage": "",
-        "stars": 656,
+        "stars": 657,
         "forks": 84,
         "language": "Python",
         "topics": [],
-        "updatedAt": "2026-05-27",
+        "updatedAt": "2026-05-28",
         "openIssues": 8,
         "tags": [
           "代码生成",
@@ -1384,8 +1383,8 @@
         "description": "The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞",
         "url": "https://github.com/VoltAgent/awesome-openclaw-skills",
         "homepage": "https://clawskills.sh/",
-        "stars": 49436,
-        "forks": 4834,
+        "stars": 49470,
+        "forks": 4835,
         "language": "",
         "topics": [
           "agent-skills",
@@ -1401,7 +1400,7 @@
           "openclaw",
           "openclaw-skills"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 15,
         "tags": [
           "自动化",
@@ -1416,8 +1415,8 @@
         "description": "Lightweight, open-source AI agent for your tools, chats, and workflows.",
         "url": "https://github.com/HKUDS/nanobot",
         "homepage": "https://nanobot.wiki",
-        "stars": 43286,
-        "forks": 7639,
+        "stars": 43331,
+        "forks": 7647,
         "language": "Python",
         "topics": [
           "ai",
@@ -1434,8 +1433,8 @@
           "openai",
           "openclaw"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 886,
+        "updatedAt": "2026-05-29",
+        "openIssues": 887,
         "tags": [
           "自动化",
           "AI 代理",
@@ -1449,8 +1448,8 @@
         "description": "Agent skills for Obsidian. Teach your agent to use Markdown, Bases, JSON Canvas, and use the CLI.",
         "url": "https://github.com/kepano/obsidian-skills",
         "homepage": "",
-        "stars": 33326,
-        "forks": 2326,
+        "stars": 33438,
+        "forks": 2343,
         "language": "",
         "topics": [
           "claude",
@@ -1463,7 +1462,7 @@
           "opencode",
           "skills"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 38,
         "tags": [
           "自动化",
@@ -1478,8 +1477,8 @@
         "description": "AI Agent Assistant & development framework that integrates lots of IM platforms, LLMs, plugins and AI feature, and can be your openclaw alternative. ✨",
         "url": "https://github.com/AstrBotDevs/AstrBot",
         "homepage": "https://astrbot.app",
-        "stars": 33268,
-        "forks": 2286,
+        "stars": 33332,
+        "forks": 2290,
         "language": "Python",
         "topics": [
           "agent",
@@ -1499,7 +1498,7 @@
           "qqbot",
           "telegram"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 1176,
         "tags": [
           "自动化",
@@ -1516,12 +1515,12 @@
         "description": "Use claude-code for free in the terminal, VSCode extension or discord like OpenClaw (voice supported)",
         "url": "https://github.com/Alishahryar1/free-claude-code",
         "homepage": "",
-        "stars": 30371,
-        "forks": 4594,
+        "stars": 30603,
+        "forks": 4627,
         "language": "Python",
         "topics": [],
-        "updatedAt": "2026-05-28",
-        "openIssues": 186,
+        "updatedAt": "2026-05-29",
+        "openIssues": 193,
         "tags": [
           "开发工具"
         ]
@@ -1533,8 +1532,8 @@
         "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
         "url": "https://github.com/mvanhorn/last30days-skill",
         "homepage": "",
-        "stars": 26696,
-        "forks": 2281,
+        "stars": 26759,
+        "forks": 2288,
         "language": "Python",
         "topics": [
           "ai-prompts",
@@ -1558,8 +1557,8 @@
           "web-search",
           "youtube"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 75,
+        "updatedAt": "2026-05-29",
+        "openIssues": 76,
         "tags": [
           "AI 代理"
         ]
@@ -1571,8 +1570,8 @@
         "description": "OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need throu",
         "url": "https://github.com/volcengine/OpenViking",
         "homepage": "https://openviking.ai",
-        "stars": 24794,
-        "forks": 1885,
+        "stars": 24862,
+        "forks": 1894,
         "language": "Python",
         "topics": [
           "agent",
@@ -1589,8 +1588,8 @@
           "rag",
           "skill"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 243,
+        "updatedAt": "2026-05-29",
+        "openIssues": 246,
         "tags": [
           "UI/UX 设计",
           "自动化",
@@ -1606,8 +1605,8 @@
         "description": "Claude Code skill implementing Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition.",
         "url": "https://github.com/OthmanAdi/planning-with-files",
         "homepage": "",
-        "stars": 22223,
-        "forks": 1973,
+        "stars": 22288,
+        "forks": 1979,
         "language": "Python",
         "topics": [
           "adal",
@@ -1630,7 +1629,7 @@
           "pi-agent",
           "planning"
         ],
-        "updatedAt": "2026-05-28",
+        "updatedAt": "2026-05-29",
         "openIssues": 11,
         "tags": [
           "UI/UX 设计",
@@ -1646,8 +1645,8 @@
         "description": "Context window optimization for AI coding agents. Sandboxes tool output, 98% reduction. 15 platforms",
         "url": "https://github.com/mksglu/context-mode",
         "homepage": "https://context-mode.com",
-        "stars": 15830,
-        "forks": 1136,
+        "stars": 15928,
+        "forks": 1145,
         "language": "TypeScript",
         "topics": [
           "antigravity",
@@ -1671,12 +1670,32 @@
           "skills",
           "zed-extension"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 26,
+        "updatedAt": "2026-05-29",
+        "openIssues": 30,
         "tags": [
           "AI 代理",
           "开发工具",
           "API 集成"
+        ]
+      },
+      {
+        "id": 1127248221,
+        "name": "clawhub",
+        "fullName": "openclaw/clawhub",
+        "description": "Skill + Plugin Registry for OpenClaw",
+        "url": "https://github.com/openclaw/clawhub",
+        "homepage": "https://clawhub.ai",
+        "stars": 8795,
+        "forks": 1374,
+        "language": "TypeScript",
+        "topics": [
+          "directory",
+          "skill"
+        ],
+        "updatedAt": "2026-05-29",
+        "openIssues": 117,
+        "tags": [
+          "插件市场"
         ]
       },
       {
@@ -1686,8 +1705,8 @@
         "description": "Context-aware AI assistant for your desktop. Ready to respond intelligently, seamlessly integrating multiple LLMs and MCP tools.",
         "url": "https://github.com/Sylinko/Everywhere",
         "homepage": "https://everywhere.sylinko.com",
-        "stars": 5974,
-        "forks": 362,
+        "stars": 5977,
+        "forks": 365,
         "language": "C#",
         "topics": [
           "ai",
@@ -1705,8 +1724,8 @@
           "openclaw",
           "personal"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 22,
+        "updatedAt": "2026-05-29",
+        "openIssues": 23,
         "tags": [
           "AI 代理",
           "开发工具",
@@ -1720,7 +1739,7 @@
         "description": "OpenClaw-RL: Train any agent simply by talking",
         "url": "https://github.com/Gen-Verse/OpenClaw-RL",
         "homepage": "https://arxiv.org/abs/2603.10165",
-        "stars": 5399,
+        "stars": 5405,
         "forks": 585,
         "language": "Python",
         "topics": [
@@ -1752,12 +1771,12 @@
         "description": "Lossless Claw — LCM (Lossless Context Management) plugin for OpenClaw",
         "url": "https://github.com/Martian-Engineering/lossless-claw",
         "homepage": "",
-        "stars": 4786,
+        "stars": 4790,
         "forks": 410,
         "language": "TypeScript",
         "topics": [],
-        "updatedAt": "2026-05-28",
-        "openIssues": 215,
+        "updatedAt": "2026-05-29",
+        "openIssues": 218,
         "tags": [
           "项目管理"
         ]
@@ -1769,7 +1788,7 @@
         "description": "Enhanced LanceDB memory plugin for OpenClaw — Hybrid Retrieval (Vector + BM25), Cross-Encoder Rerank, Multi-Scope Isolation, Management CLI",
         "url": "https://github.com/CortexReach/memory-lancedb-pro",
         "homepage": "https://youtu.be/bhuGrjuCM_g",
-        "stars": 4383,
+        "stars": 4385,
         "forks": 727,
         "language": "JavaScript",
         "topics": [
@@ -1780,8 +1799,8 @@
           "openclaw-plugin",
           "rag"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 82,
+        "updatedAt": "2026-05-29",
+        "openIssues": 83,
         "tags": [
           "AI 代理",
           "项目管理"
@@ -1794,8 +1813,8 @@
         "description": "🛰️ A CLI tool for tracking token usage from OpenCode, Claude Code, 🦞OpenClaw (Clawdbot/Moltbot), Pi, Codex, Gemini, Cursor, AmpCode, Factory Droid, Kimi, and more! • 🏅Global Leaderboard + 2D/3D Con",
         "url": "https://github.com/junhoyeo/tokscale",
         "homepage": "https://tokscale.ai",
-        "stars": 3272,
-        "forks": 215,
+        "stars": 3314,
+        "forks": 216,
         "language": "Rust",
         "topics": [
           "ai",
@@ -1819,8 +1838,8 @@
           "opentui",
           "token-usage"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 95,
+        "updatedAt": "2026-05-29",
+        "openIssues": 102,
         "tags": [
           "UI/UX 设计",
           "自动化",
@@ -1835,8 +1854,8 @@
         "description": "A single hub to find Claude Skills, Agents, Commands, Hooks, Plugins, and Marketplace collections to extend Claude Code, Claude Desktop, Agent SDK and OpenClaw",
         "url": "https://github.com/davepoon/buildwithclaude",
         "homepage": "https://www.buildwithclaude.com",
-        "stars": 2978,
-        "forks": 359,
+        "stars": 2982,
+        "forks": 360,
         "language": "Python",
         "topics": [
           "claude",
@@ -1852,8 +1871,8 @@
           "plugin-marketplace",
           "subagents"
         ],
-        "updatedAt": "2026-05-27",
-        "openIssues": 10,
+        "updatedAt": "2026-05-29",
+        "openIssues": 11,
         "tags": [
           "UI/UX 设计",
           "AI 代理",
@@ -1886,8 +1905,8 @@
           "telegram-bot",
           "voice-assistant"
         ],
-        "updatedAt": "2026-05-26",
-        "openIssues": 61,
+        "updatedAt": "2026-05-28",
+        "openIssues": 54,
         "tags": [
           "UI/UX 设计",
           "自动化",
@@ -1903,7 +1922,7 @@
         "description": "A powerful Zotero AI and MCP plugin with ChatGPT, Gemini 3.5, Claude, DeepSeek V4, Grok, OpenRouter, Kimi 2.6, GLM 5, SiliconFlow, GPT-oss, Gemma 4, Qwen 3.7",
         "url": "https://github.com/papersgpt/papersgpt-for-zotero",
         "homepage": "https://www.papersgpt.com",
-        "stars": 2420,
+        "stars": 2424,
         "forks": 80,
         "language": "JavaScript",
         "topics": [
@@ -1928,8 +1947,8 @@
           "qwen3",
           "zotero"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 72,
+        "updatedAt": "2026-05-29",
+        "openIssues": 71,
         "tags": [
           "AI 代理",
           "API 集成"
@@ -1939,40 +1958,17 @@
         "id": 1144107326,
         "name": "dingtalk-openclaw-connector",
         "fullName": "DingTalk-Real-AI/dingtalk-openclaw-connector",
-        "description": "Official OpenClaw DingTalk channel plugin | 钉钉官方 OpenClaw 插件",
+        "description": "Official OpenClaw DingTalk channel plugin | 钉钉��方 OpenClaw 插件",
         "url": "https://github.com/DingTalk-Real-AI/dingtalk-openclaw-connector",
         "homepage": "",
-        "stars": 2071,
+        "stars": 2072,
         "forks": 202,
         "language": "TypeScript",
         "topics": [],
         "updatedAt": "2026-05-28",
-        "openIssues": 38,
+        "openIssues": 37,
         "tags": [
           "其他"
-        ]
-      },
-      {
-        "id": 1160222695,
-        "name": "OpenClaw-bot-review",
-        "fullName": "xmanrui/OpenClaw-bot-review",
-        "description": "A lightweight web dashboard for viewing all your OpenClaw Bots/Agents/Models/Sessions status at a glance.",
-        "url": "https://github.com/xmanrui/OpenClaw-bot-review",
-        "homepage": "",
-        "stars": 1957,
-        "forks": 395,
-        "language": "TypeScript",
-        "topics": [
-          "open-claw",
-          "openclaw"
-        ],
-        "updatedAt": "2026-05-27",
-        "openIssues": 39,
-        "tags": [
-          "代码审查",
-          "自动化",
-          "数据分析",
-          "AI 代理"
         ]
       },
       {
@@ -1982,8 +1978,8 @@
         "description": "📚 Sync skills across all AI CLI tools with one command and simplify team sharing. Supporting Codex, Claude Code, OpenClaw & more",
         "url": "https://github.com/runkids/skillshare",
         "homepage": "https://skillshare.runkids.cc",
-        "stars": 1941,
-        "forks": 119,
+        "stars": 2013,
+        "forks": 125,
         "language": "Go",
         "topics": [
           "agenthub",
@@ -2007,8 +2003,8 @@
           "skillshare",
           "team-management"
         ],
-        "updatedAt": "2026-05-28",
-        "openIssues": 13,
+        "updatedAt": "2026-05-29",
+        "openIssues": 15,
         "tags": [
           "代码审查",
           "UI/UX 设计",

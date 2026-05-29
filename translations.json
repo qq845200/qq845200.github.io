@@ -242,5 +242,9 @@
   "runkids/skillshare": {
     "cnName": "技能工具",
     "cnDesc": "只需一个命令，即可跨所有AI CLI工具同📚步技能，并简化团队共享。支持Codex、Claude Code、OpenClaw等"
+  },
+  "openclaw/clawhub": {
+    "cnName": "技能工具",
+    "cnDesc": "OpenClaw的技能+插件注册表"
   }
 }
