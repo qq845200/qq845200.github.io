@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      commit_sha: ${{ steps.commit.outputs.sha }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,12 +20,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/fetch-skills.js
       - name: 提交更新
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add skills-data.json translations.json
           git diff --cached --quiet || git commit -m "chore: 更新技能数据 $(date +%Y-%m-%d)"
           git push
+          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+      - name: 输出提交 SHA
+        run: echo "部署将使用的提交: ${{ steps.commit.outputs.sha }}"
   deploy:
     needs: update
     runs-on: ubuntu-latest
@@ -36,6 +42,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.update.outputs.commit_sha }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
